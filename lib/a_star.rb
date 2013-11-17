@@ -6,4 +6,8 @@ class AStar
 	def closed_list
 		[]
 	end
+
+	def steps
+		[]
+	end
 end
