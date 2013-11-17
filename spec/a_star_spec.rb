@@ -1,20 +1,21 @@
 require 'a_star'
 
 describe 'AStar' do
-	context 'When we dont pass any argument to A star' do
+	context 'without arguments' do
+		before(:each) do
+      		@aStart = AStar.new
+    	end
+
 		it 'should has open list empty' do
-			aStart = AStar.new
-			expect(aStart.open_list).to eq []
+			expect(@aStart.open_list).to eq []
 		end
 
 		it 'should has a close list empty' do
-			aStart = AStar.new
-			expect(aStart.closed_list).to eq []
+			expect(@aStart.closed_list).to eq []
 		end
 
 		it 'should has a empty list with all the steps' do
-			aStart = AStar.new
-			expect(aStart.steps).to eq []
+			expect(@aStart.steps).to eq []
 		end
 	end
 end
