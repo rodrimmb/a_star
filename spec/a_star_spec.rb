@@ -11,5 +11,10 @@ describe 'AStar' do
 			aStart = AStar.new
 			expect(aStart.closed_list).to eq []
 		end
+
+		it 'should has a empty list with all the steps' do
+			aStart = AStar.new
+			expect(aStart.steps).to eq []
+		end
 	end
 end
