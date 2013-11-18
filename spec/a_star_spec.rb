@@ -1,4 +1,5 @@
 require 'a_star'
+require 'node'
 
 describe 'AStar' do
 	context 'without arguments' do

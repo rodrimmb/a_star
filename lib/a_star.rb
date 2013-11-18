@@ -1,4 +1,12 @@
 class AStar
+	def initialize(start = nil)
+		@startNode = start
+	end
+
+	def start_node
+		@startNode
+	end
+
 	def open_list
 		[]
 	end
