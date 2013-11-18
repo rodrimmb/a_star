@@ -28,5 +28,12 @@ describe 'AStar' do
 			expect(aStart.start_node).to eq startNode
 			expect(aStart.end_node).to eq endNode
 		end
+
+		it 'should has a node start in open list' do
+			startNode = Node.new
+			endNode = Node.new
+			aStart = AStar.new(startNode, endNode)
+			expect(aStart.open_list[0]).to eq startNode
+		end
 	end
 end
