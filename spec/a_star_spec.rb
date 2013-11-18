@@ -41,4 +41,15 @@ describe 'AStar' do
 			expect(@aStart.steps).to eq []
 		end
 	end
+
+	context 'search' do
+		it 'should open start node the firts time' do
+			startNode = Node.new()
+			endNode = Node.new()
+			aStart = AStar.new(startNode,endNode)
+
+			expect(aStart.search.steps.first).to eq startNode
+		end
+
+	end
 end
