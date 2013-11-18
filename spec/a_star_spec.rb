@@ -35,5 +35,10 @@ describe 'AStar' do
 		it 'should has a start node in the open list' do
 			expect(@aStart.open_list.first).to eq @startNode
 		end
+
+		it 'if we don\'t search open list and steps must be empty' do
+			expect(@aStart.closed_list).to eq []
+			expect(@aStart.steps).to eq []
+		end
 	end
 end
