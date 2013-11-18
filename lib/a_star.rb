@@ -5,11 +5,13 @@ class AStar
 
 		@openList = []
 		@closedList = []
-		@steps = []
 
 		if @startNode
 			@openList << @startNode
 		end
+	end
+
+	def search
 	end
 
 	def start_node
@@ -26,9 +28,5 @@ class AStar
 
 	def closed_list
 		@closedList
-	end
-
-	def steps
-		@steps
 	end
 end

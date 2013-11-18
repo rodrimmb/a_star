@@ -14,10 +14,6 @@ describe 'AStar' do
 		it 'should has a close list empty' do
 			expect(@aStart.closed_list).to eq []
 		end
-
-		it 'should has a empty list with all the steps' do
-			expect(@aStart.steps).to eq []
-		end
 	end
 
 	context 'with arguments' do
@@ -36,19 +32,18 @@ describe 'AStar' do
 			expect(@aStart.open_list.first).to eq @startNode
 		end
 
-		it 'if we don\'t search open list and steps must be empty' do
+		it 'if we don\'t search open list' do
 			expect(@aStart.closed_list).to eq []
-			expect(@aStart.steps).to eq []
 		end
 	end
 
 	context 'search' do
-		it 'should open start node the firts time' do
+		it 'start node is the goals node' do
 			startNode = Node.new()
-			endNode = Node.new()
-			aStart = AStar.new(startNode,endNode)
+			aStart = AStar.new(startNode, startNode)
 
-			expect(aStart.search.steps.first).to eq startNode
+			expect(aStart.search.closed_list).to eq startNode
+			expect(aStart.search.open_list).to eq []
 		end
 
 	end
