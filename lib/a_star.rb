@@ -1,10 +1,15 @@
 class AStar
-	def initialize(start = nil)
-		@startNode = start
+	def initialize(startNode = nil, endNode = nil)
+		@startNode = startNode
+		@endNode = endNode
 	end
 
 	def start_node
 		@startNode
+	end
+
+	def end_node
+		@endNode
 	end
 
 	def open_list
