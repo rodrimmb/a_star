@@ -21,11 +21,12 @@ describe 'AStar' do
 	end
 
 	context 'with arguments' do
-		it 'should has a start node' do
-			start = Node.new
-			aStart = AStar.new(start)
-			expect(aStart.start_node).to eq start
+		it 'should has a start node and end node' do
+			startNode = Node.new
+			endNode = Node.new
+			aStart = AStar.new(startNode, endNode)
+			expect(aStart.start_node).to eq startNode
+			expect(aStart.end_node).to eq endNode
 		end
-
 	end
 end
