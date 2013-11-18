@@ -21,19 +21,19 @@ describe 'AStar' do
 	end
 
 	context 'with arguments' do
+		before(:each) do
+      		@startNode = Node.new
+			@endNode = Node.new
+			@aStart = AStar.new(@startNode, @endNode)
+    	end
+
 		it 'should has a start node and end node' do
-			startNode = Node.new
-			endNode = Node.new
-			aStart = AStar.new(startNode, endNode)
-			expect(aStart.start_node).to eq startNode
-			expect(aStart.end_node).to eq endNode
+			expect(@aStart.start_node).to eq @startNode
+			expect(@aStart.end_node).to eq @endNode
 		end
 
-		it 'should has a node start in open list' do
-			startNode = Node.new
-			endNode = Node.new
-			aStart = AStar.new(startNode, endNode)
-			expect(aStart.open_list[0]).to eq startNode
+		it 'should has a start node in the open list' do
+			expect(@aStart.open_list.first).to eq @startNode
 		end
 	end
 end

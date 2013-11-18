@@ -2,6 +2,12 @@ class AStar
 	def initialize(startNode = nil, endNode = nil)
 		@startNode = startNode
 		@endNode = endNode
+
+		@openList = []
+
+		if @startNode
+			@openList << @startNode
+		end
 	end
 
 	def start_node
@@ -13,7 +19,7 @@ class AStar
 	end
 
 	def open_list
-		[]
+		@openList
 	end
 
 	def closed_list
