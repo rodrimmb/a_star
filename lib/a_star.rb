@@ -4,6 +4,8 @@ class AStar
 		@endNode = endNode
 
 		@openList = []
+		@closedList = []
+		@steps = []
 
 		if @startNode
 			@openList << @startNode
@@ -23,10 +25,10 @@ class AStar
 	end
 
 	def closed_list
-		[]
+		@closedList
 	end
 
 	def steps
-		[]
+		@steps
 	end
 end
