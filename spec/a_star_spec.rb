@@ -18,4 +18,13 @@ describe 'AStar' do
 			expect(@aStart.steps).to eq []
 		end
 	end
+
+	context 'with arguments' do
+		it 'should has a start node' do
+			start = Node.new
+			aStart = AStar.new(start)
+			expect(aStart.start_node).to eq start
+		end
+
+	end
 end
