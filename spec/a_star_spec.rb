@@ -42,19 +42,18 @@ describe 'AStar' do
 			startNode = Node.new()
 			aStart = AStar.new(startNode, startNode)
 
-			expect(aStart.search.closed_list.first).to eq startNode
-			expect(aStart.search.open_list).to eq []
+			expect(aStart.search.solution).to eq [startNode]
 		end
 
 		it 'when the goal is one of the children of start node' do 
 			startNode = Node.new
-			goalNode = Node.new
-			anOtherNode = Node.new
+			goalNode = Node.new(startNode)
+			anOtherNode = Node.new(startNode)
 
-			startNode.set_children([goalNode, anOtherNode])
+			startNode.set_children([anOtherNode, goalNode])
 			aStart = AStar.new(startNode, goalNode)
 
-			expect(aStart.search.solution.pop).to eq goalNode
+			expect(aStart.search.solution).to eq [startNode, goalNode]
 		end
 
 	end
