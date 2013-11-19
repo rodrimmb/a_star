@@ -38,12 +38,23 @@ describe 'AStar' do
 	end
 
 	context 'search' do
-		it 'start node is the goals node' do
+		it 'when start node is also the goal node' do
 			startNode = Node.new()
 			aStart = AStar.new(startNode, startNode)
 
 			expect(aStart.search.closed_list.first).to eq startNode
 			expect(aStart.search.open_list).to eq []
+		end
+
+		it 'when the goal is one of the children of start node' do 
+			startNode = Node.new
+			goalNode = Node.new
+			anOtherNode = Node.new
+
+			startNode.set_children([goalNode, anOtherNode])
+			aStart = AStar.new(startNode, goalNode)
+
+			expect(aStart.search.solution.pop).to eq goalNode
 		end
 
 	end
