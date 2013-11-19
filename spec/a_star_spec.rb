@@ -42,7 +42,7 @@ describe 'AStar' do
 			startNode = Node.new()
 			aStart = AStar.new(startNode, startNode)
 
-			expect(aStart.search.closed_list).to eq startNode
+			expect(aStart.search.closed_list.first).to eq startNode
 			expect(aStart.search.open_list).to eq []
 		end
 

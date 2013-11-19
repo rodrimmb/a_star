@@ -12,6 +12,9 @@ class AStar
 	end
 
 	def search
+		@closedList << @openList.first
+		@openList.shift
+		self
 	end
 
 	def start_node
