@@ -1,8 +1,13 @@
 class Node
 
-	def initialize(parent = nil, children = [])
+	def initialize(name, parent = nil, children = [])
+		@name = name;
 		@children = children
 		@parent = parent
+	end
+
+	def name
+		@name
 	end
 
 	def set_children(children)

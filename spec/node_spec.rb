@@ -5,6 +5,6 @@ describe Node do
 			name = "A" 
 			node = Node.new(name)
 
-			expect(node.name).to be "A"
+			expect(node.name).to eq "A"
 		end
 end
