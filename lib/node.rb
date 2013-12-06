@@ -10,11 +10,15 @@ class Node
 		@name
 	end
 
+	def deep
+		0
+	end
+
 	def set_children(children)
 		@children = children
 	end
 
-	def get_children
+	def children
 		@children
 	end
 
