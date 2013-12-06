@@ -23,16 +23,16 @@ describe 'AStar' do
 			@aStart = AStar.new(@startNode, @endNode)
     	end
 
-		it 'should has a start node and end node' do
+		it 'should has a star node and end node' do
 			expect(@aStart.start_node).to eq @startNode
 			expect(@aStart.end_node).to eq @endNode
 		end
 
-		it 'should has a start node in the open list' do
+		it 'should has a star node in the open list' do
 			expect(@aStart.open_list.first).to eq @startNode
 		end
 
-		it 'if we don\'t search open list' do
+		it 'if we don\'t search closed list must be empty' do
 			expect(@aStart.closed_list).to eq []
 		end
 	end
