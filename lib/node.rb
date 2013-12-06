@@ -11,7 +11,11 @@ class Node
 	end
 
 	def deep
-		0
+		if @parent 
+			1
+		else
+			0
+		end
 	end
 
 	def set_children(children)

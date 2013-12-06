@@ -19,7 +19,7 @@ class AStar
 				@solution = node
 			else
 				if node.has_children
-					node.get_children.each do |child|
+					node.children.each do |child|
 						@openList << child
 					end
 				end
