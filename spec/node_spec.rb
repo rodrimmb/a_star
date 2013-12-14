@@ -30,8 +30,16 @@ describe Node do
 			expect(@node_father.children).to be @node_child
 		end
 
+		it 'child shold have a parent' do
+			expect(@node_child.parent).to be @node_father
+		end
+
 		it 'the deep of node child should be 1' do
 			expect(@node_child.deep).to eq 1
+		end
+
+		it 'child node should have a 4 of cost' do
+			expect(@node_child.cost).to eq 4
 		end
 	end
 end

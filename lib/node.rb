@@ -26,23 +26,7 @@ class Node
 		@children
 	end
 
-	def has_children
-		if @children
-			true
-		else
-			false
-		end
-	end
-
 	def parent
 		@parent
-	end
-
-	def has_parents
-		if @parent
-			true
-		else
-			false
-		end
 	end
 end

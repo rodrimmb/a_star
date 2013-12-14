@@ -18,7 +18,7 @@ class AStar
 			if is_goal(node)
 				@solution = node
 			else
-				if node.has_children
+				if node.children
 					node.children.each do |child|
 						@openList << child
 					end
@@ -31,7 +31,7 @@ class AStar
 
 	def solution
 		solution =[]
-		if @solution.has_parents
+		if @solution.parent
 			solution.push(@solution.parent, @solution)
 		else
 			solution << @solution
