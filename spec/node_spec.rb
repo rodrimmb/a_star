@@ -42,4 +42,9 @@ describe Node do
 			expect(@node_child.cost).to eq 4
 		end
 	end
+
+	context 'tree with varius nodes' do
+
+	end
+	
 end

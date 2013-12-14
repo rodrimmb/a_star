@@ -29,4 +29,8 @@ class Node
 	def parent
 		@parent
 	end
+
+	def cost
+		4
+	end
 end
