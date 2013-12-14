@@ -38,13 +38,11 @@ describe Node do
 			expect(@node_child.deep).to eq 1
 		end
 
-		it 'child node should have a 4 of cost' do
-			expect(@node_child.cost).to eq 4
+		it 'we can put cost a node' do
+			@node_child.set_cost(5)
+			expect(@node_child.cost).to eq 5
 		end
-	end
-
-	context 'tree with varius nodes' do
 
 	end
-	
+
 end

@@ -30,7 +30,11 @@ class Node
 		@parent
 	end
 
+	def set_cost(cost)
+		@cost = cost
+	end
+
 	def cost
-		4
+		@cost
 	end
 end
