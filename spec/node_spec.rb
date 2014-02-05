@@ -75,10 +75,14 @@ describe Node do
 
 			@node_F = Node.new(0, "F", @node_C)			
 
-			@node_B.set_children([node_D, node_E])
-			@node_C.set_children(node_F)
+			@node_B.set_children([@node_D, @node_E])
+			@node_C.set_children(@node_F)
 
-			@node_A.set_children([node_B,node_C])
+			@node_A.set_children([@node_B,@node_C])
     	end
+
+    	it 'the deep of node child in the three level should be 3' do
+			expect(@node_F.deep).to eq 3
+		end
 	end
 end
