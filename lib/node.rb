@@ -36,6 +36,7 @@ class Node
 		else
 			@children << children
 		end
+		self
 	end
 
 	def children

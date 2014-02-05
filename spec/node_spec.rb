@@ -50,7 +50,7 @@ describe Node do
 
 		it 'can put another child to the father node' do
 			expect(@node_father.children.size).to be 1
-			expect(@node_father..set_children(Node.new(0,"child_2")).children.size).to be 2
+			expect(@node_father.set_children(Node.new(0,"child_2")).children.size).to be 2
 		end
 	end
 
