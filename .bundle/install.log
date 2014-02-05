@@ -1,0 +1,26 @@
+# Logfile created on 2014-01-23 12:17:41 +0100 by logger.rb/41954
+I, [2014-01-23T12:17:41.389400 #13300]  INFO -- : 0:  ZenTest (4.9.5) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/ZenTest-4.9.5.gemspec
+I, [2014-01-23T12:17:42.724127 #13300]  INFO -- : 0:  autotest (4.4.6) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/autotest-4.4.6.gemspec
+I, [2014-01-23T12:17:44.293807 #13300]  INFO -- : 0:  diff-lcs (1.2.5) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/diff-lcs-1.2.5.gemspec
+I, [2014-01-23T12:17:46.727939 #13300]  INFO -- : 0:  rspec-core (2.14.7) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-core-2.14.7.gemspec
+I, [2014-01-23T12:17:48.460602 #13300]  INFO -- : 0:  rspec-expectations (2.14.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-expectations-2.14.4.gemspec
+I, [2014-01-23T12:17:50.161430 #13300]  INFO -- : 0:  rspec-mocks (2.14.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-mocks-2.14.4.gemspec
+I, [2014-01-23T12:17:51.281716 #13300]  INFO -- : 0:  rspec (2.14.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-2.14.1.gemspec
+I, [2014-01-23T12:17:51.282178 #13300]  INFO -- : 0:  bundler (1.5.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353@global/specifications/bundler-1.5.1.gemspec
+I, [2014-01-23T12:32:58.760599 #13321]  INFO -- : 0:  ZenTest (4.9.5) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/ZenTest-4.9.5.gemspec
+I, [2014-01-23T12:32:58.761164 #13321]  INFO -- : 0:  autotest (4.4.6) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/autotest-4.4.6.gemspec
+I, [2014-01-23T12:32:58.761527 #13321]  INFO -- : 0:  diff-lcs (1.2.5) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/diff-lcs-1.2.5.gemspec
+I, [2014-01-23T12:33:00.404150 #13321]  INFO -- : 0:  redgreen (1.2.2) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/redgreen-1.2.2.gemspec
+I, [2014-01-23T12:33:00.404789 #13321]  INFO -- : 0:  rspec-core (2.14.7) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-core-2.14.7.gemspec
+I, [2014-01-23T12:33:00.405662 #13321]  INFO -- : 0:  rspec-expectations (2.14.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-expectations-2.14.4.gemspec
+I, [2014-01-23T12:33:00.406624 #13321]  INFO -- : 0:  rspec-mocks (2.14.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-mocks-2.14.4.gemspec
+I, [2014-01-23T12:33:00.407131 #13321]  INFO -- : 0:  rspec (2.14.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-2.14.1.gemspec
+I, [2014-01-23T12:33:00.407696 #13321]  INFO -- : 0:  bundler (1.5.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353@global/specifications/bundler-1.5.1.gemspec
+I, [2014-01-23T13:04:16.125870 #13466]  INFO -- : 0:  ZenTest (4.9.5) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/ZenTest-4.9.5.gemspec
+I, [2014-01-23T13:04:16.126413 #13466]  INFO -- : 0:  autotest (4.4.6) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/autotest-4.4.6.gemspec
+I, [2014-01-23T13:04:16.126783 #13466]  INFO -- : 0:  diff-lcs (1.2.5) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/diff-lcs-1.2.5.gemspec
+I, [2014-01-23T13:04:16.127150 #13466]  INFO -- : 0:  rspec-core (2.14.7) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-core-2.14.7.gemspec
+I, [2014-01-23T13:04:16.127502 #13466]  INFO -- : 0:  rspec-expectations (2.14.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-expectations-2.14.4.gemspec
+I, [2014-01-23T13:04:16.127845 #13466]  INFO -- : 0:  rspec-mocks (2.14.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-mocks-2.14.4.gemspec
+I, [2014-01-23T13:04:16.128194 #13466]  INFO -- : 0:  rspec (2.14.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-2.14.1.gemspec
+I, [2014-01-23T13:04:16.128516 #13466]  INFO -- : 0:  bundler (1.5.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353@global/specifications/bundler-1.5.1.gemspec

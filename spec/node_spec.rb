@@ -20,6 +20,11 @@ describe Node do
 		it 'has a value' do
 			expect(@node.value).to eq @value
 		end
+
+		it 'can change the value' do
+			expect(@node.value).to eq @value
+			expect(@node.set_value(10).value).to eq 10
+		end
 	end
 
 	context 'node with one child' do 
