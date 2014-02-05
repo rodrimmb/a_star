@@ -23,6 +23,11 @@ class Node
 		@value
 	end
 
+	def set_value(value)
+		@value = value
+		self
+	end
+
 	def set_children(children)
 		if children.class == Array
 			children.each do |x|
