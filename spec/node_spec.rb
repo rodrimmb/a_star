@@ -48,9 +48,9 @@ describe Node do
 			expect(@node_child.deep).to eq 1
 		end
 
-		it 'we can put cost a node' do
-			@node_child.set_cost(5)
-			expect(@node_child.cost).to eq 5
+		it 'can put another child to the father node' do
+			expect(@node_father.children.size).to be 1
+			expect(@node_father..set_children(Node.new(0,"child_2")).children.size).to be 2
 		end
 	end
 

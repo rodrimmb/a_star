@@ -45,12 +45,4 @@ class Node
 	def parent
 		@parent
 	end
-
-	def set_cost(cost)
-		@cost = cost
-	end
-
-	def cost
-		@cost
-	end
 end
