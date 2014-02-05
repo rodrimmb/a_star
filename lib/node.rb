@@ -1,7 +1,8 @@
 class Node
 
-	def initialize(name, parent = nil, children = [])
-		@name = name;
+	def initialize(value, name = nil, parent = nil, children = [])
+		@name = name
+		@value = value
 		@children = children
 		@parent = parent
 	end
@@ -18,8 +19,18 @@ class Node
 		end
 	end
 
+	def value
+		@value
+	end
+
 	def set_children(children)
-		@children = children
+		if children.class == Array
+			children.each do |x|
+				@children << x
+			end
+		else
+			@children << children
+		end
 	end
 
 	def children

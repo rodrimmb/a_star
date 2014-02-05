@@ -18,8 +18,8 @@ describe 'AStar' do
 
 	context 'with arguments' do
 		before(:each) do
-      		@startNode = Node.new("A")
-			@endNode = Node.new("B")
+      		@startNode = Node.new("A",0)
+			@endNode = Node.new("B",0)
 			@aStart = AStar.new(@startNode, @endNode)
     	end
 
@@ -39,16 +39,16 @@ describe 'AStar' do
 
 	context 'search' do
 		it 'when start node is also the goal node' do
-			startNode = Node.new("A")
+			startNode = Node.new("A",0)
 			aStart = AStar.new(startNode, startNode)
 
 			expect(aStart.search.solution).to eq [startNode]
 		end
 
 		it 'when the goal is one of the children of start node' do 
-			startNode = Node.new("A")
-			goalNode = Node.new("B",startNode)
-			anOtherNode = Node.new("C",startNode)
+			startNode = Node.new("A",0)
+			goalNode = Node.new("B",0,startNode)
+			anOtherNode = Node.new("C",0,startNode)
 
 			startNode.set_children([anOtherNode, goalNode])
 			aStart = AStar.new(startNode, goalNode)
