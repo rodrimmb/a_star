@@ -13,11 +13,13 @@ class Node
 	end
 
 	def deep
-		if @parent 
-			1
-		else
-			0
+		node = @parent
+		deep = 0
+		while node
+			deep +=1
+			node = node.parent
 		end
+		deep
 	end
 
 	def value
