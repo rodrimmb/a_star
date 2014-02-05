@@ -52,6 +52,12 @@ describe Node do
 			expect(@node_father.children.size).to be 1
 			expect(@node_father.set_children(Node.new(0,"child_2")).children.size).to be 2
 		end
+
+		it 'can put others children to the father node' do
+			expect(@node_father.children.size).to be 1
+			children = [Node.new(0,"child_2"), Node.new(0,"child_3")]
+			expect(@node_father.set_children(children).children.size).to be 3
+		end
 	end
 
 	context 'tree with various nodes' do
