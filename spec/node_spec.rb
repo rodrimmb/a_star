@@ -48,6 +48,10 @@ describe Node do
 			expect(@node_child.deep).to eq 1
 		end
 
+		it 'the path of child should be itself and its father' do
+			expect(@node_child.path).to be [@node_father,@node_child]
+		end
+
 		it 'can put another child to the father node' do
 			expect(@node_father.children.size).to be 1
 			expect(@node_father.set_children(Node.new(0,"child_2")).children.size).to be 2
