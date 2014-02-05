@@ -5,6 +5,7 @@ class Node
 		@value = value
 		@children = children
 		@parent = parent
+		@path = []
 	end
 
 	def name
@@ -38,6 +39,14 @@ class Node
 		end
 		self
 	end
+
+	def path
+		if self.parent
+			@path << self.parent
+		end
+		@path << self
+	end
+
 
 	def children
 		@children

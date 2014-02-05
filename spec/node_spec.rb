@@ -49,7 +49,7 @@ describe Node do
 		end
 
 		it 'the path of child should be itself and its father' do
-			expect(@node_child.path).to be [@node_father,@node_child]
+			expect(@node_child.path).to eq [@node_father,@node_child]
 		end
 
 		it 'can put another child to the father node' do
