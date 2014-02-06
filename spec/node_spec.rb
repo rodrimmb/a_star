@@ -84,5 +84,9 @@ describe Node do
     	it 'the deep of node child in the three level should be 2' do
 			expect(@node_F.deep).to eq 2
 		end
+
+		it 'the deep of node child in the two level should be 1' do
+			expect(@node_B.deep).to eq 1
+		end
 	end
 end
