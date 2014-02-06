@@ -2,9 +2,9 @@ class Node
 
 	def initialize(value, name = nil, parent = nil, children = [])
 		@name = name
-		@value = value
-		@children = children
-		@parent = parent
+		set_value(value)
+		set_children(children)
+		set_parent(parent)
 		@path = []
 	end
 
@@ -33,8 +33,12 @@ class Node
 
 	def set_children(children)
 		if children.class == Array
-			children.each do |x|
-				@children << x
+			if children.size > 0
+				children.each do |x|
+					@children << x
+				end
+			else
+				@children = []
 			end
 		else
 			@children << children
@@ -59,5 +63,10 @@ class Node
 
 	def parent
 		@parent
+	end
+
+	def set_parent(parent)
+		@parent = parent
+		self
 	end
 end
