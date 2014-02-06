@@ -43,9 +43,12 @@ class Node
 	end
 
 	def path
-		if self.parent
-			@path << self.parent
+		node = self.parent
+		while node
+			@path << node
+			node = node.parent
 		end
+		@path = @path.reverse
 		@path << self
 	end
 
