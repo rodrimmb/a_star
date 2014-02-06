@@ -88,5 +88,9 @@ describe Node do
 		it 'the deep of node child in the two level should be 1' do
 			expect(@node_B.deep).to eq 1
 		end
+
+		it 'obtain the path of child in the three level' do
+			expect(@node_F.path).to eq [@node_A, @node_C, @node_F]
+		end
 	end
 end
