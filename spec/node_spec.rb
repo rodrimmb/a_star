@@ -25,6 +25,11 @@ describe Node do
 			expect(@node.value).to eq @value
 			expect(@node.set_value(10).value).to eq 10
 		end
+
+		it 'can add a parent' do
+			parent = Node.new(0,"parent");
+			expect(@node.set_parent(parent).parent).to eq parent
+		end
 	end
 
 	context 'node with one child' do 
