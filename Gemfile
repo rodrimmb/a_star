@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rspec'
-gem 'autotest'
+group :development, :test do
+	gem 'rspec'
+	gem 'autotest'
+end
+
+gem 'sinatra'

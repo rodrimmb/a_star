@@ -1,34 +1,38 @@
-require 'node'
+require 'model/node'
 
 describe Node do
 		
-	context 'single node' do
+	context 'single node with one state' do
 		before(:each) do
-      		@name = "A"
-      		@value = 4
-			@node = Node.new(@value, @name)
+			@value = double "value"
+  			@value.stub(:is_final? => true)
+			@node = Node.new(@value)
     	end
-
-		it 'should has a name' do
-			expect(@node.name).to be @name
-		end
 
 		it 'has a 0 deep if it hasn\'t parent' do
 			expect(@node.deep).to eq 0
 		end
 
-		it 'has a value' do
-			expect(@node.value).to eq @value
+		it 'has a state' do
+			expect(@node.state).to eq @value
 		end
 
 		it 'can change the value' do
-			expect(@node.value).to eq @value
-			expect(@node.set_value(10).value).to eq 10
+			expect(@node.state).to eq @value
+			expect(@node.set_state(10).state).to eq 10
 		end
 
 		it 'can add a parent' do
-			parent = Node.new(0,"parent");
+			parent = Node.new(0);
 			expect(@node.set_parent(parent).parent).to eq parent
+		end
+
+		it 'can check if itself is the goal node' do
+			expect(@node.is_goal?).to be_true
+		end
+
+		it 'the path is an arry with the state' do
+			expect(@node.path).to eq [@node]
 		end
 	end
 
@@ -36,8 +40,8 @@ describe Node do
 		before(:each) do
       		father = "father"
 			child = "child"
-			@node_father = Node.new(0, father)
-			@node_child = Node.new(0, child, @node_father)
+			@node_father = Node.new(father)
+			@node_child = Node.new(child, @node_father)
 			@node_father.set_children(@node_child)
     	end
 
@@ -71,14 +75,14 @@ describe Node do
 
 	context 'tree with various nodes' do
 		before(:each) do
-			@node_A = Node.new(0, "A")
-			@node_B = Node.new(0, "B", @node_A)
-			@node_C = Node.new(0, "C", @node_A)
+			@node_A = Node.new("A")
+			@node_B = Node.new("B", @node_A)
+			@node_C = Node.new("C", @node_A)
 
-			@node_D = Node.new(0, "D", @node_B)
-			@node_E = Node.new(0, "E", @node_B)
+			@node_D = Node.new("D", @node_B)
+			@node_E = Node.new("E", @node_B)
 
-			@node_F = Node.new(0, "F", @node_C)			
+			@node_F = Node.new("F", @node_C)			
 
 			@node_B.set_children([@node_D, @node_E])
 			@node_C.set_children(@node_F)
