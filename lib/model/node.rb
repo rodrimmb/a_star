@@ -12,6 +12,7 @@ class Node
 		set_children(children)
 		set_parent(parent)
 		@path = []
+		@expanded = false
 	end
 
 	def state
@@ -34,6 +35,18 @@ class Node
 
 	def children
 		@children
+	end
+
+	def expand
+		nodes = []
+		if not @expanded
+			state.expand.each do |state|
+				nodes << Node.new(state, self)
+			end
+			set_children(nodes)
+			expanded
+		end
+		children
 	end
 
 	def set_children(children)
@@ -73,6 +86,10 @@ class Node
 		@state.is_final?
 	end
 
+	def ==(node)
+		state.value == node.state.value
+	end
+
 	private
 
 	def calculate_path
@@ -85,5 +102,9 @@ class Node
 			@path = @path.reverse
 		end
 		@path << self
+	end
+
+	def expanded
+		@expanded = true
 	end
 end

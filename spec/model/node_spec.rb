@@ -4,9 +4,10 @@ describe Node do
 		
 	context 'single node with one state' do
 		before(:each) do
-			@value = double "value"
-  			@value.stub(:is_final? => true)
-			@node = Node.new(@value)
+			@state_a = create_state(true, 3, [])
+			@state_b = create_state(true, 5, [])
+			@state = create_state(false, 4, [@state_a, @state_b])
+			@node = Node.new(@state)
     	end
 
 		it 'has a 0 deep if it hasn\'t parent' do
@@ -14,25 +15,30 @@ describe Node do
 		end
 
 		it 'has a state' do
-			expect(@node.state).to eq @value
+			expect(@node.state).to eq @state
 		end
 
-		it 'can change the value' do
-			expect(@node.state).to eq @value
+		it 'can change the state' do
+			expect(@node.state).to eq @state
 			expect(@node.set_state(10).state).to eq 10
 		end
 
 		it 'can add a parent' do
-			parent = Node.new(0);
+			parent = Node.new(@state_a);
 			expect(@node.set_parent(parent).parent).to eq parent
 		end
 
 		it 'can check if itself is the goal node' do
-			expect(@node.is_goal?).to be_true
+			expect(@node.is_goal?).to be_false
 		end
 
 		it 'the path is an arry with the state' do
 			expect(@node.path).to eq [@node]
+		end
+
+		it 'can expand a node and obtain its children' do
+			expected_children = [Node.new(@state_a,@node),Node.new(@state_b,@node)]
+			expect(@node.expand).to eq expected_children
 		end
 	end
 
@@ -102,4 +108,12 @@ describe Node do
 			expect(@node_F.path).to eq [@node_A, @node_C, @node_F]
 		end
 	end
+end
+
+def create_state(is_final, value, expand)
+	state = double "state"
+  	state.stub(:is_final? => is_final)
+  	state.stub(:value => value)
+  	state.stub(:expand => expand)
+  	state
 end

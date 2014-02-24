@@ -7,7 +7,7 @@ class PriorityQueue
 		nodes.each do |node|
 			@queue << node
 		end
-		sort_queue
+		#sort_queue
 		self
 	end
 

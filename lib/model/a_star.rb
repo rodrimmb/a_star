@@ -21,6 +21,7 @@ class AStar < SearchAlgorithm
 		while !priority_queue.is_empty?
 			return priority_queue.next.path if priority_queue.next.is_goal?
 			priority_queue.next.expand
+			break
 		end
 	end
 end
