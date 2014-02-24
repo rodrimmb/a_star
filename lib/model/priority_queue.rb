@@ -3,16 +3,16 @@ class PriorityQueue
 	def initialize
 		@queue = []
 	end
-	def set_node(nodes)
+	def set_nodes(nodes)
 		nodes.each do |node|
 			@queue << node
 		end
-		#sort_queue
-		self
+		sort_queue
+		@queue
 	end
 
 	def sort_queue
-
+		@queue = @queue.sort_by {|node| node.state.value}
 	end
 
 	def is_empty?
@@ -21,5 +21,9 @@ class PriorityQueue
 
 	def next
 		@queue.first
+	end
+
+	def queue
+		@queue
 	end
 end

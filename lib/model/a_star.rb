@@ -16,7 +16,7 @@ class AStar < SearchAlgorithm
 
 	def find_path(initial, goal)
 		priority_queue = PriorityQueue.new
-		priority_queue.set_node([initial])
+		priority_queue.set_nodes([initial])
 
 		while !priority_queue.is_empty?
 			return priority_queue.next.path if priority_queue.next.is_goal?

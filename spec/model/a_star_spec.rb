@@ -18,6 +18,7 @@ describe AStar do
 		expect(@a_star.find_path(initial_node, goal_node)).to eq expected_path
 	end
 
+	
 	it 'node with two children that one of them was a goal' do
 		state_goal = create_state(true, 3, [])
 		goal = Node.new(state_goal)
@@ -32,6 +33,7 @@ describe AStar do
 
 		expect(@a_star.find_path(initial,goal)).to eq expected_path
 	end
+	
 end
 
 def create_state(is_final, value, expand)

@@ -90,6 +90,34 @@ class Node
 		state.value == node.state.value
 	end
 
+	def >(node)
+		if state.value > node.state.value
+			return true
+		end
+		return false
+	end
+
+	def <(node)
+		if state.value < node.state.value
+			return true
+		end
+		return false
+	end
+
+	def >=(node)
+		if state.value >= node.state.value
+			return true
+		end
+		return false
+	end
+
+	def <=(node)
+		if state.value <= node.state.value
+			return true
+		end
+		return false
+	end
+
 	private
 
 	def calculate_path
