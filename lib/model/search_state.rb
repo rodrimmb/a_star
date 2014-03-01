@@ -1,6 +1,8 @@
 class SearchState
 
-	@value
+	def initialize(value)
+		@value = value
+	end
 
 	def is_final? 
 		raise NotImplementedError, "Implement this method in a child class of SearchState"

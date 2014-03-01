@@ -5,4 +5,5 @@ group :development, :test do
 	gem 'autotest'
 end
 
+gem 'json'
 gem 'sinatra'

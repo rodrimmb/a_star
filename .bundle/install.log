@@ -48,3 +48,16 @@ I, [2014-02-22T18:16:20.353344 #1333]  INFO -- : 0:  rspec (2.14.1) from /Users/
 I, [2014-02-22T18:16:20.353810 #1333]  INFO -- : 0:  tilt (1.4.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/tilt-1.4.1.gemspec
 I, [2014-02-22T18:16:20.354211 #1333]  INFO -- : 0:  sinatra (1.4.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/sinatra-1.4.4.gemspec
 I, [2014-02-22T18:16:20.354547 #1333]  INFO -- : 0:  bundler (1.5.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353@global/specifications/bundler-1.5.1.gemspec
+I, [2014-03-01T18:36:43.671636 #1633]  INFO -- : 0:  ZenTest (4.9.5) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/ZenTest-4.9.5.gemspec
+I, [2014-03-01T18:36:43.687338 #1633]  INFO -- : 0:  autotest (4.4.6) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/autotest-4.4.6.gemspec
+I, [2014-03-01T18:36:43.690163 #1633]  INFO -- : 0:  diff-lcs (1.2.5) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/diff-lcs-1.2.5.gemspec
+I, [2014-03-01T18:36:43.690779 #1633]  INFO -- : 0:  json (1.7.7) from /Users/rodri/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/gems/2.0.0/specifications/default/json-1.7.7.gemspec
+I, [2014-03-01T18:36:43.691246 #1633]  INFO -- : 0:  rack (1.5.2) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rack-1.5.2.gemspec
+I, [2014-03-01T18:36:43.691665 #1633]  INFO -- : 0:  rack-protection (1.5.2) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rack-protection-1.5.2.gemspec
+I, [2014-03-01T18:36:43.692054 #1633]  INFO -- : 0:  rspec-core (2.14.7) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-core-2.14.7.gemspec
+I, [2014-03-01T18:36:43.692404 #1633]  INFO -- : 0:  rspec-expectations (2.14.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-expectations-2.14.4.gemspec
+I, [2014-03-01T18:36:43.692750 #1633]  INFO -- : 0:  rspec-mocks (2.14.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-mocks-2.14.4.gemspec
+I, [2014-03-01T18:36:43.693096 #1633]  INFO -- : 0:  rspec (2.14.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-2.14.1.gemspec
+I, [2014-03-01T18:36:43.693462 #1633]  INFO -- : 0:  tilt (1.4.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/tilt-1.4.1.gemspec
+I, [2014-03-01T18:36:43.693822 #1633]  INFO -- : 0:  sinatra (1.4.4) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353/specifications/sinatra-1.4.4.gemspec
+I, [2014-03-01T18:36:43.694152 #1633]  INFO -- : 0:  bundler (1.5.1) from /Users/rodri/.rvm/gems/ruby-2.0.0-p353@global/specifications/bundler-1.5.1.gemspec
