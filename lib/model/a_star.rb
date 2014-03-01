@@ -19,9 +19,13 @@ class AStar < SearchAlgorithm
 		priority_queue.set_nodes([initial])
 
 		while !priority_queue.is_empty?
-			return priority_queue.next.path if priority_queue.next.is_goal?
-			priority_queue.next.expand
-			break
+			
+			element = priority_queue.next
+			return element.path if element.is_goal?
+			
+			if (element.has_children?)
+				priority_queue.set_nodes(element.expand)
+			end
 		end
 	end
 end

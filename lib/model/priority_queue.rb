@@ -20,7 +20,7 @@ class PriorityQueue
 	end
 
 	def next
-		@queue.first
+		@queue.shift
 	end
 
 	def queue

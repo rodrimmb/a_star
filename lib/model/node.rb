@@ -37,18 +37,6 @@ class Node
 		@children
 	end
 
-	def expand
-		nodes = []
-		if not @expanded
-			state.expand.each do |state|
-				nodes << Node.new(state, self)
-			end
-			set_children(nodes)
-			expanded
-		end
-		children
-	end
-
 	def set_children(children)
 		if children.class == Array
 			if children.size > 0
@@ -62,6 +50,22 @@ class Node
 			@children << children
 		end
 		self
+	end
+
+	def expand
+		nodes = []
+		if not @expanded and state.has_children?
+			state.expand.each do |state|
+				nodes << Node.new(state, self)
+			end
+			set_children(nodes)
+			expanded
+		end
+		children
+	end
+
+	def has_children?
+		state.has_children?
 	end
 
 	def path

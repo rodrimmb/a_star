@@ -4,9 +4,9 @@ describe Node do
 		
 	context 'single node with one state' do
 		before(:each) do
-			@state_a = create_state(true, 3, [])
-			@state_b = create_state(true, 5, [])
-			@state = create_state(false, 4, [@state_a, @state_b])
+			@state_a = create_state(true, 3, [], true)
+			@state_b = create_state(true, 5, [], false)
+			@state = create_state(false, 4, [@state_a, @state_b], true)
 			@node = Node.new(@state)
     	end
 
@@ -110,10 +110,11 @@ describe Node do
 	end
 end
 
-def create_state(is_final, value, expand)
+def create_state(is_final, value, expand, children)
 	state = double "state"
   	state.stub(:is_final? => is_final)
   	state.stub(:value => value)
   	state.stub(:expand => expand)
+  	state.stub(:has_children? => children)
   	state
 end

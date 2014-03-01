@@ -9,6 +9,10 @@ class SearchState
 	def expand 
 		raise NotImplementedError, "Implement this method in a child class of SearchState"
 	end
+
+	def has_children?
+		raise NotImplementedError, "Implement this method in a child class of SearchState"
+	end
 	
 	def value
 		@value
