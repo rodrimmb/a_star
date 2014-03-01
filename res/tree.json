@@ -16,7 +16,40 @@
                         "value":"7",
                         "goal":"false",
                         "children":[
-
+                           {
+                              "node":{
+                                 "node_name":"H",
+                                 "value":"5",
+                                 "goal":"false",
+                                 "children":[
+                                    {
+                                       "node":{
+                                          "node_name":"L",
+                                          "value":"7",
+                                          "goal":"false",
+                                          "children":[
+                                             {
+                                                "node":{
+                                                   "node_name":"M",
+                                                   "value":"0",
+                                                   "goal":"true",
+                                                   "children":[]
+                                                }
+                                             }
+                                          ]
+                                       }
+                                    }
+                                 ]
+                              }
+                           },
+                           {
+                              "node":{
+                                 "node_name":"I",
+                                 "value":"4",
+                                 "goal":"false",
+                                 "children":[]
+                              }
+                           }
                         ]
                      }
                   },
@@ -25,9 +58,7 @@
                         "node_name":"E",
                         "value":"9",
                         "goal":"false",
-                        "children":[
-
-                        ]
+                        "children":[]
                      }
                   }
                ]
@@ -39,7 +70,56 @@
                "value":"3",
                "goal":"false",
                "children":[
-
+                  {
+                     "node":{
+                        "node_name":"F",
+                        "value":"6",
+                        "goal":"false",
+                        "children":[
+                           {
+                              "node":{
+                                 "node_name":"I",
+                                 "value":"4",
+                                 "goal":"false",
+                                 "children":[]
+                              }
+                           },
+                           {
+                              "node":{
+                                 "node_name":"J",
+                                 "value":"2",
+                                 "goal":"false",
+                                 "children":[]
+                              }
+                           }
+                        ]
+                     }
+                  },
+                  {
+                     "node":{
+                        "node_name":"G",
+                        "value":"8",
+                        "goal":"false",
+                        "children":[
+                           {
+                              "node":{
+                                 "node_name":"J",
+                                 "value":"2",
+                                 "goal":"false",
+                                 "children":[]
+                              }
+                           },
+                           {
+                              "node":{
+                                 "node_name":"K",
+                                 "value":"0",
+                                 "goal":"true",
+                                 "children":[]
+                              }
+                           }
+                        ]
+                     }
+                  }
                ]
             }
          }
