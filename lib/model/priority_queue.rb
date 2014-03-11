@@ -7,12 +7,14 @@ class PriorityQueue
 		nodes.each do |node|
 			@queue << node
 		end
-		sort_queue
+		if @queue.size > 1
+			sort_queue
+		end
 		@queue
 	end
 
 	def sort_queue
-		@queue = @queue.sort_by {|node| node.state.value}
+		@queue = @queue.sort_by {|node| node.state.value + node.deep}
 	end
 
 	def is_empty?
@@ -24,6 +26,7 @@ class PriorityQueue
 	end
 
 	def queue
+		sort_queue
 		@queue
 	end
 end

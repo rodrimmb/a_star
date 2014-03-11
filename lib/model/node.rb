@@ -91,7 +91,7 @@ class Node
 	end
 
 	def ==(node)
-		state.value == node.state.value
+		state == node.state
 	end
 
 	def >(node)
