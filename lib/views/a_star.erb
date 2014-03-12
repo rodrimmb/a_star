@@ -1,11 +1,12 @@
-<div id="grid"></div>
+<div style="position: relative; height: 300px;">
+    <div id="listOfNodes" style="position: absolute; left: 0px; width: 49.9%; height: 300px;"></div>
+    <div id="solution" style="position: absolute; right: 0px; width: 49.9%; height: 300px;"></div>
+</div>
 <script>
-$(function () {
-    $('#grid').w2grid({
-        name: 'grid',
-        url: {
-            get: 'data/example.json'
-        },
+
+    $('#listOfNodes').w2grid({
+        name: 'listOfNodes',
+        url: { get: 'data/example' },
         header: 'List of Nodes',
         show: {
             header         : true,  // indicates if header is visible
@@ -33,5 +34,31 @@ $(function () {
             { field: 'goal', caption: 'Goal', size: '20%' }            
         ]
     });
-});
+
+$('#solution').w2grid({
+        name: 'solution',
+        header: 'Solution',
+        show: {
+            header         : true,  // indicates if header is visible
+            toolbar        : false,  // indicates if toolbar is visible
+            footer         : false,  // indicates if footer is visible
+            columnHeaders  : true,   // indicates if columns is visible
+            lineNumbers    : true,  // indicates if line numbers column is visible
+            expandColumn   : false,  // indicates if expand column is visible
+            selectColumn   : false,  // indicates if select column is visible
+            emptyRecords   : true,   // indicates if empty records are visible
+            toolbarReload  : false,   // indicates if toolbar reload button is visible
+            toolbarColumns : false,   // indicates if toolbar columns button is visible
+            toolbarSearch  : false,   // indicates if toolbar search controls are visible
+            toolbarAdd     : false,   // indicates if toolbar add new button is visible
+            toolbarDelete  : false,   // indicates if toolbar delete button is visible
+            toolbarSave    : false,   // indicates if toolbar save button is visible
+            selectionBorder: true,   // display border arround selection (for selectType = 'cell')
+            recordTitles   : true    // indicates if to define titles for records
+        },
+        columns: [
+            { field: 'open', caption: 'Open', size: '50%' },
+            { field: 'closed', caption: 'Closed', size: '50%' }        
+        ]
+    });
 </script>

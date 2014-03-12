@@ -25,10 +25,13 @@ get '/a_star' do
 	erb :"a_star"
 end
 
-post '/data/example.json', :provides => :json do
-  content_type :json
+post '/data/example' do
   res = "./res/astar.json" 
   json = File.read(res)
-  output = JSON.parse '{ "status": "success", "total": 7, "records":'+ json +' }'
+  output = JSON.parse '{ "status": "success", "total": 13, "records":'+ json +' }'
   output.to_json
+end
+
+post '/data/exampleSolution' do
+  
 end
