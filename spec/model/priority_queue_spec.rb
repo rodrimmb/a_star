@@ -6,10 +6,10 @@ describe PriorityQueue do
 	before(:each) do
 		@pqueue = PriorityQueue.new
 
-		state_1 = create_state(false, 2, [], false)
-		state_2 = create_state(false, 14, [], false)
-		state_3 = create_state(false, 4, [], false)
-		state_4 = create_state(false, 0, [], false)
+		state_1 = create_state("A",false, 2, [], false)
+		state_2 = create_state("B",false, 14, [], false)
+		state_3 = create_state("C",false, 4, [], false)
+		state_4 = create_state("D",false, 0, [], false)
 
 		@node_1 = Node.new(state_1)
 		@node_2 = Node.new(state_2)
@@ -18,25 +18,34 @@ describe PriorityQueue do
     end
 
 	it 'can add new elements and get them back in order' do
-		expected_result = [@node_4, @node_1, @node_3, @node_2]
+		expected_result = @node_1
+		@pqueue.add_node(@node_1.state.value + @node_1.deep, @node_1)
 
-		expect(@pqueue.set_nodes([@node_1, @node_2, @node_3, @node_4])).to eq expected_result
+		expect(@pqueue.next).to eq expected_result
+		expect(@pqueue.is_empty?).to be_true
 	end
 
-	it 'can add new elements to a priority queue with elements and get them back in order' do
-		expected_result = [@node_4, @node_1, @node_3, @node_2]
+	it 'can add various nodes to a priority queue and get them back in order' do
+		@pqueue.add_node(@node_1.state.value + @node_1.deep, @node_1)
+		@pqueue.add_node(@node_2.state.value + @node_2.deep, @node_2)
+		@pqueue.add_node(@node_3.state.value + @node_3.deep, @node_3)
+		@pqueue.add_node(@node_4.state.value + @node_4.deep, @node_4)
 
-		@pqueue.set_nodes([@node_1, @node_2])		
-
-		expect(@pqueue.set_nodes([@node_3, @node_4])).to eq expected_result
+		expect(@pqueue.queue).to eq ["D", "A", "C", "B"]
+		expect(@pqueue.next).to eq @node_4
+		expect(@pqueue.next).to eq @node_1
+		expect(@pqueue.next).to eq @node_3
+		expect(@pqueue.next).to eq @node_2
+		expect(@pqueue.is_empty?).to be_true
 	end
 
 
 	
 end
 
-def create_state(is_final, value, expand, children)
+def create_state(name, is_final, value, expand, children)
 	state = double "state"
+	state.stub(:name => name)
   	state.stub(:is_final? => is_final)
   	state.stub(:value => value)
   	state.stub(:expand => expand)

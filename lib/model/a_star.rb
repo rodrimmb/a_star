@@ -22,29 +22,33 @@ class AStar < SearchAlgorithm
 
 	def find_path(initial)
 		priority_queue = PriorityQueue.new
-		priority_queue.set_nodes([initial])
-		@open = priority_queue.queue
+		priority_queue.add_node(initial.state.value + initial.deep, initial)
 
 		while !priority_queue.is_empty?
-			generate_operation
-			element = priority_queue.next
-			
 			@open = priority_queue.queue
+			generate_operation
 
-			return element.path if element.is_goal?
-			
-			if (element.has_children?)
-				@closed << element
-				priority_queue.set_nodes(element.expand)
+			n = priority_queue.next
+
+			if n.is_goal? 
+				return n.path
+			end
+			# Don't should give the name only the node
+			@closed << n.state.name
+
+			n.expand.each do |child|
+				priority_queue.add_node(child.state.value + child.deep, child)
 			end
 		end
-		raise "Solution not found"
+		raise "Solution for A* not found"
 	end
 
 	private 
 
 	def generate_operation
-		@operations[@cont] = {"open" => open, "closed" => closed}
+		@operations[@cont] = {"open" => @open, "closed" => @closed}
+		# Quit (Only for developing)
+		puts "#{@cont} #{@operations[@cont]["open"]} #{@operations[@cont]["closed"]}"
 		@cont += 1
 	end
 end

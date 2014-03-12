@@ -3,18 +3,10 @@ class PriorityQueue
 	def initialize
 		@queue = []
 	end
-	def set_nodes(nodes)
-		nodes.each do |node|
-			@queue << node
-		end
-		if @queue.size > 1
-			sort_queue
-		end
-		@queue
-	end
-
-	def sort_queue
-		@queue = @queue.sort_by {|node| node.state.value + node.deep}
+	def add_node(priority, node)
+		@queue << [priority, @queue.length, node]
+        @queue.sort!
+        self
 	end
 
 	def is_empty?
@@ -22,11 +14,15 @@ class PriorityQueue
 	end
 
 	def next
-		@queue.shift
+		@queue.shift[2]
 	end
 
 	def queue
-		sort_queue
-		@queue
+		list = []
+		@queue.each do |element|
+			# Don't should give the name only the node
+			list << element[2].state.name
+		end
+		list
 	end
 end

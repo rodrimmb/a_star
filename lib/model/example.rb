@@ -30,11 +30,7 @@ class Example < SearchState
 		result
 	end
 
-	def set_children(children)
-		
-	end
-
 	def ==(state)
-		self.name == state.name
+		@name == state.name
 	end
 end
