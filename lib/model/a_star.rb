@@ -44,7 +44,6 @@ class AStar < SearchAlgorithm
 	private 
 
 	def generate_operation
-		puts "Este es el paso #{@cont} el tamaño de open es #{@open.size} y el de closed #{@closed.size}"
 		@operations[@cont] = {"open" => open, "closed" => closed}
 		@cont += 1
 	end
