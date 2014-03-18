@@ -1,22 +1,15 @@
-Given(/^A start node and goal node$/) do
-	res = "./res/tree.json" 
-	json = File.read(res)
-
-	@tree = JSON.parse(json)
-
-	name = @tree["node"]["node_name"]
-	value = @tree["node"]["value"].to_i
-	if @tree["node"]["goal"] == "true" then goal = true else goal = false end
-	children = @tree["node"]["children"]
-
-	@initial_node = Node.new(Example.new(value, name, goal, children))
+Given(/^a start node$/) do
+	@initial_node = Node.new(HandlerJson.get_state("A"))
 end
 
-When(/^I want to know the path in the tree$/) do
-	@a_star = AStar.new
-	@path = @a_star.find_path(@initial_node) 
+When(/^I looking for a goal node$/) do
+	 a_star = AStar.new
+	 @solution = a_star.search @initial_node
 end
 
-Then(/^the result is the shortest path$/) do
-	
+Then(/^I get the shortest path solution$/) do
+	@solution.each do |node|
+		puts node.state.name
+	end
+	#expect(@solution).to eq ["A","C","G","K"]
 end

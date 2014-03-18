@@ -5,7 +5,8 @@ class HandlerJson
 
 		output.each do |state|
 			if state["name"] == state_name
-				return Example.new(state["value"], state["name"], state["goal"], state["children"])
+        if state["children"] != nil then children = state["children"] else children = [] end
+				return Example.new(state["cost"], state["name"], state["goal"], children)
 			end
 		end
 

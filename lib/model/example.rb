@@ -4,7 +4,7 @@ require 'json'
 
 class Example < SearchState
 
-	attr_reader :name, :children
+	attr_reader :name, :children, :value
 
 	def initialize(value, name, goal, children)
 		@value = value

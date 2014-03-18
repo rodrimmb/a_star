@@ -4,9 +4,9 @@ describe Node do
 		
 	context 'single node with one state' do
 		before(:each) do
-			@state_a = create_state("A",true, 3, [], true)
-			@state_b = create_state("B",true, 5, [], false)
-			@state = create_state("C",false, 4, [@state_a, @state_b], true)
+			@state_a = create_state("B",true, 3, [], true)
+			@state_b = create_state("C",true, 5, [], false)
+			@state = create_state("A",false, 4, [@state_a, @state_b], true)
 			@node = Node.new(@state)
     	end
 

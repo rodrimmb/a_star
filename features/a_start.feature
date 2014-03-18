@@ -4,7 +4,7 @@ Feature: I have to find the shortest path to the goal node in a tree given in a 
 	I want to know the path to a goal node
 
 	Scenario: Shortest path
-		Given A start node and goal node
-		When I want to know the path in the tree
-		Then the result is the shortest path
+		Given a start node
+		When I looking for a goal node
+		Then I get the shortest path solution
 

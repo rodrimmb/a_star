@@ -11,7 +11,7 @@ require_relative './priority_queue.rb'
 
 class AStar < SearchAlgorithm
 	
-	attr_reader :open, :closed, :operations
+	attr_reader :operations
 
 	def initialize()
 		@open = []
@@ -20,7 +20,7 @@ class AStar < SearchAlgorithm
 		@cont = 1
 	end
 
-	def find_path(initial)
+	def search(initial)
 		priority_queue = PriorityQueue.new
 		priority_queue.add_node(initial.state.value + initial.deep, initial)
 
@@ -33,12 +33,14 @@ class AStar < SearchAlgorithm
 			if n.is_goal? 
 				return n.path
 			end
-			# Don't should give the name only the node
-			@closed << n.state.name
 
 			n.expand.each do |child|
-				priority_queue.add_node(child.state.value + child.deep, child)
+				if not @closed.include?(child.state.name)
+					priority_queue.add_node(child.state.value + child.deep, child)
+				end
 			end
+			# Don't should give the name only the node
+			@closed << n.state.name
 		end
 		raise "Solution for A* not found"
 	end

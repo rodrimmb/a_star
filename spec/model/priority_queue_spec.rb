@@ -31,7 +31,6 @@ describe PriorityQueue do
 		@pqueue.add_node(@node_3.state.value + @node_3.deep, @node_3)
 		@pqueue.add_node(@node_4.state.value + @node_4.deep, @node_4)
 
-		expect(@pqueue.queue).to eq ["D", "A", "C", "B"]
 		expect(@pqueue.next).to eq @node_4
 		expect(@pqueue.next).to eq @node_1
 		expect(@pqueue.next).to eq @node_3
@@ -39,8 +38,17 @@ describe PriorityQueue do
 		expect(@pqueue.is_empty?).to be_true
 	end
 
+	it 'when I insert the same node with better heuristic the old one is substituted' do 
+		state = create_state("A",false, 8, [], false)
+		better_state = create_state("A",false, 2, [], false)
 
-	
+		node = Node.new(state)
+		better_node = Node.new(better_state)
+
+		@pqueue.add_node(node.state.value + node.deep, node)
+
+		expect(@pqueue.add_node(better_node.state.value + better_node.deep, better_node).queue).to eq [better_node]
+	end
 end
 
 def create_state(name, is_final, value, expand, children)
@@ -50,5 +58,8 @@ def create_state(name, is_final, value, expand, children)
   	state.stub(:value => value)
   	state.stub(:expand => expand)
   	state.stub(:has_children? => children)
+  	state.stub(:==) do |arg|
+  	  if arg == name then true else false end
+	end
   	state
 end

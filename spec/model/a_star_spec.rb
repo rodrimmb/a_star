@@ -15,7 +15,7 @@ describe AStar do
 
 		expected_path = goal_node.path
 
-		expect(@a_star.find_path(initial_node)).to eq expected_path
+		expect(@a_star.search(initial_node)).to eq expected_path
 	end
 
 	
@@ -31,7 +31,7 @@ describe AStar do
 
 		expected_path = [initial, goal]
 
-		expect(@a_star.find_path(initial)).to eq expected_path
+		expect(@a_star.search(initial)).to eq expected_path
 	end
 
 	it 'tree with 3 levels and one node goal' do
@@ -51,7 +51,7 @@ describe AStar do
 		expected_path = [initial, child1_2, goal]
 
 
-		expect(@a_star.find_path(initial)).to eq expected_path
+		expect(@a_star.search(initial)).to eq expected_path
 	end
 	
 end
