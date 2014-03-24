@@ -17,7 +17,7 @@ class HandlerJson
   end
 
   def self.obtain_file
-    resource = "./res/astar.json"
+    resource = "./public/res/astar.json"
     File.read(resource)
   end
 end

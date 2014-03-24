@@ -16,7 +16,7 @@ class AStar < SearchAlgorithm
 	def initialize()
 		@open = []
 		@closed = []
-		@operations = {}
+		@operations = []
 		@cont = 1
 	end
 
@@ -48,9 +48,9 @@ class AStar < SearchAlgorithm
 	private 
 
 	def generate_operation
-		@operations[@cont] = {"open" => @open, "closed" => @closed}
+		@operations << {"id" => @cont, "open"=> @open, "closed" => @closed}
 		# Quit (Only for developing)
-		puts "#{@cont} #{@operations[@cont]["open"]} #{@operations[@cont]["closed"]}"
+		#puts "#{@cont} #{@open} #{@closed}"
 		@cont += 1
 	end
 end
