@@ -16,7 +16,7 @@ class DataJson < ApplicationController
 
   post '/solution' do
     aStar = AStar.new
-    initial = Node.new(HandlerJson.get_state("A"))
+    initial = Node.new(HandlerJson.get_state("A", "./public/res/astar.json"))
     path = aStar.search(initial)
     output = JSON.parse "{ \"status\": \"success\", \"total\": #{aStar.operations.size}, \"records\": #{create_json_solution(aStar.operations)}}"
     json output
@@ -24,7 +24,7 @@ class DataJson < ApplicationController
 
   get '/solution_json' do
     aStar = AStar.new
-    initial = Node.new(HandlerJson.get_state("A"))
+    initial = Node.new(HandlerJson.get_state("A", "./public/res/astar.json"))
     path = aStar.search(initial)
     output = JSON.parse "{ \"status\": \"success\", \"total\": #{aStar.operations.size}, \"records\": #{create_json_solution(aStar.operations)}}"
     json output

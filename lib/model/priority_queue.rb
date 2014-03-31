@@ -20,8 +20,7 @@ class PriorityQueue
 	def queue
 		list = []
 		@queue.each do |element|
-			# Don't should give the name only the node
-			list << element[2].state.name
+			list << element[2]
 		end
 		list
 	end

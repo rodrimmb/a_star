@@ -35,12 +35,11 @@ class AStar < SearchAlgorithm
 			end
 
 			n.expand.each do |child|
-				if not @closed.include?(child.state.name)
+				if not @closed.include?(child)
 					priority_queue.add_node(child.state.value + child.deep, child)
 				end
 			end
-			# Don't should give the name only the node
-			@closed << n.state.name
+			@closed << n
 		end
 		raise "Solution for A* not found"
 	end
@@ -48,7 +47,18 @@ class AStar < SearchAlgorithm
 	private 
 
 	def generate_operation
-		@operations << {"id" => @cont, "open"=> @open, "closed" => @closed}
+		open = []
+		closed = []
+		
+		@open.each do |node|
+			open << node.state.name
+		end
+
+		@closed.each do |node|
+			closed << node.state.name
+		end
+
+		@operations << {"id" => @cont, "open"=> open, "closed" => closed}
 		# Quit (Only for developing)
 		#puts "#{@cont} #{@open} #{@closed}"
 		@cont += 1

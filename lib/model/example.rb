@@ -6,7 +6,7 @@ class Example < SearchState
 
 	attr_reader :name, :children, :value
 
-	def initialize(value, name, goal, children)
+	def initialize(value, name, goal, children = [])
 		@value = value
 		@name = name
 		@goal = goal
@@ -23,11 +23,11 @@ class Example < SearchState
 	end
 
 	def expand
-		result = []
-		@children.each do |state_name|
-			result << HandlerJson.get_state(state_name)
+		states = []
+		children.each do |state_name|
+			states << HandlerJson.get_state(state_name, "./public/res/astar.json")
 		end
-		result
+		return states
 	end
 
 	def ==(state)

@@ -1,7 +1,7 @@
 class HandlerJson
 	
-  def self.get_state(state_name)
-  	output = JSON.parse(obtain_file)
+  def self.get_state(state_name, file_path)
+  	output = JSON.parse(obtain_file(file_path))
 
 		output.each do |state|
 			if state["name"] == state_name
@@ -16,8 +16,7 @@ class HandlerJson
 
   end
 
-  def self.obtain_file
-    resource = "./public/res/astar.json"
-    File.read(resource)
+  def self.obtain_file(path)
+    File.read(path)
   end
 end
