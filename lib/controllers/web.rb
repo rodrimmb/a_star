@@ -4,8 +4,8 @@ class Web < ApplicationController
   	erb :index
   end
 
-  get '/a_star' do
-    @title = "Tables"
-  	erb :"a_star"
+  get '/example' do
+    @title = "Example Tables"
+  	erb :"example"
   end
 end

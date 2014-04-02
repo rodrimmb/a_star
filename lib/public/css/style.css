@@ -1,4 +1,46 @@
-#grid{
-	width: 400px;
-	height: 100%;
+#content {
+	display: flex;
 }
+
+	#left-content {
+		width: 40%;
+		height: 100%;
+	}
+
+		#nodes-list {
+			width: 100%;
+			height: 50%;
+		}
+
+		#solution-table {
+			width: 100%;
+			height: 50%;
+		}
+
+	#right-content {
+		height: 100%;
+		width: 60%;
+	}
+		#buttons {
+			background-color: #222;
+			height: 50px;
+		}
+
+		#solution{
+			background-color: #5cb85c;
+			border-color: #4cae4c;
+			height: 50px;
+			top: 50%;
+		}
+
+		#solution p {
+			color: white;
+			font-size: x-large;
+			margin-left: 20px;
+			display: inline;
+		}
+
+		#tree {
+			width: 100%;
+			height: 100%;
+		}
