@@ -22,17 +22,32 @@ class DataJson < ApplicationController
     json output
   end
 
-  get '/path_solution' do
+  get '/path_solution_json' do
     aStar = AStar.new
     initial = Node.new(HandlerJson.get_state("A", "./public/res/astar.json"))
     path = aStar.search(initial)
     
-    solution = ""
+    solution = []
     path.each do |node|
-      solution += node.state.name+" "
+      solution << node.state.name
+    end
+    output = JSON.parse(solution.to_s)
+    #"#{solution}"
+    json output
+  end 
+
+  post '/path_solution' do
+    aStar = AStar.new
+    initial = Node.new(HandlerJson.get_state("A", "./public/res/astar.json"))
+    path = aStar.search(initial)
+    
+    solution = []
+    path.each do |node|
+      solution << node.state.name
     end
 
-    "#{solution}"
+    output = JSON.parse(solution.to_s)
+    json output
   end 
 
   get '/solution_json' do

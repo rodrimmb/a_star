@@ -6,11 +6,15 @@
 
     <div id="right-content">
         <div id ="buttons">
+            <ul class="nav nav-pills">
+              <li><a onclick="readSolution()">Solve</a></li>
+              <li><a href="#">Next Step</a></li>
+            </ul>
         </div>
         <div id ="solution">
-            <p>Solucion:</p>
-            <p style="vertical-align: middle;">
-                A, B, C, K
+            <p>Solution:</p>
+            <p id="path-solution" style="vertical-align: middle;">
+                
             </p>
         </div>
         <div id="tree">
@@ -29,7 +33,7 @@
             toolbar        : true,  // indicates if toolbar is visible
             footer         : false,  // indicates if footer is visible
             columnHeaders  : true,   // indicates if columns is visible
-            lineNumbers    : false,  // indicates if line numbers column is visible
+            lineNumbers    : true,  // indicates if line numbers column is visible
             expandColumn   : false,  // indicates if expand column is visible
             selectColumn   : false,  // indicates if select column is visible
             emptyRecords   : true,   // indicates if empty records are visible
