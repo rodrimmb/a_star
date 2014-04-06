@@ -3,14 +3,14 @@ class DataJson < ApplicationController
   post '/example' do
     res = "./public/res/astar.json" 
     file = File.read(res)
-    output = JSON.parse '{ "status": "success", "total": 13, "records":'+ file +' }'
+    output = JSON.parse file
     json output
   end
 
   get '/example_json' do
     res = "./public/res/astar.json" 
     file = File.read(res)
-    output = JSON.parse '{ "status": "success", "total": 13, "records":'+ file +' }'
+    output = JSON.parse file
     json output
   end
 

@@ -1,85 +1,131 @@
 <div id="content">
+    <!-- tabs with tables -->
     <div id="left-content">
-        <div id="nodes-list"></div>
-        <div id="solution-table"></div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-table-input" data-toggle="tab">Nodes Input</a></li>
+            <li><a href="#tab-table-solution" data-toggle="tab">Solution</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Tab to add nodes -->
+            <div class="tab-pane fade active in" id="tab-table-input">
+                <div class="buttons">
+                    <ul class="nav nav-pills">
+                        <li>
+                            <a onclick="showModalAddNode()">
+                            <span class="glyphicon glyphicon-plus-sign"></span> Add new node</a>
+                        </li>
+
+                        <li>
+                            <a href="#" onclick="printNodesInATable('table-nodes-content')">
+                            <span class="glyphicon glyphicon-refresh"></span> Refresh</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Table with nodes -->
+                <table id="table-nodes" class="table table-striped table-condensed">
+                    <thead>
+                        <td>#</td>
+                        <td>Node</td>
+                        <td>Children</td>
+                        <td>Parent</td>
+                        <td>Goal</td>
+                    </thead>
+                    <tbody id="table-nodes-content">
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tab to show solution -->
+            <div class="tab-pane fade" id="tab-table-solution">
+                <div class="buttons">
+                    <ul class="nav nav-pills">
+                      <li><a onclick="getSolution()">Solve</a></li>
+                      <li><a href="#">Next Step <span class="glyphicon glyphicon-chevron-right"></span></li>
+                    </ul>
+                </div>
+                <div id ="solution">
+                    <p>Solution:</p>
+                    <p id="path-solution" style="vertical-align: middle;">
+                        
+                    </p>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <td>#</td>
+                        <td>Open</td>
+                        <td>Successors</td>
+                        <td>Closed</td>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>A <sub>2</sub> <sup>12</sup></td>
+                            <td>B <sub>2</sub> <sup>12</sup> C</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
+    <!-- Tree with the information -->
     <div id="right-content">
-        <div id ="buttons">
-            <ul class="nav nav-pills">
-              <li><a onclick="readSolution()">Solve</a></li>
-              <li><a href="#">Next Step</a></li>
-            </ul>
-        </div>
-        <div id ="solution">
-            <p>Solution:</p>
-            <p id="path-solution" style="vertical-align: middle;">
-                
-            </p>
-        </div>
         <div id="tree">
-            <canvas id="canvas" width="760" height="520"></canvas>
+            
         </div>
     </div>
 </div>
 
-<script>
-    $('#nodes-list').w2grid({
-        name: 'nodes-list',
-        url: { get: 'data/example' },
-        header: 'List of Nodes',
-        show: {
-            header         : true,  // indicates if header is visible
-            toolbar        : true,  // indicates if toolbar is visible
-            footer         : false,  // indicates if footer is visible
-            columnHeaders  : true,   // indicates if columns is visible
-            lineNumbers    : true,  // indicates if line numbers column is visible
-            expandColumn   : false,  // indicates if expand column is visible
-            selectColumn   : false,  // indicates if select column is visible
-            emptyRecords   : true,   // indicates if empty records are visible
-            toolbarReload  : true,   // indicates if toolbar reload button is visible
-            toolbarColumns : false,   // indicates if toolbar columns button is visible
-            toolbarSearch  : false,   // indicates if toolbar search controls are visible
-            toolbarAdd     : true,   // indicates if toolbar add new button is visible
-            toolbarDelete  : true,   // indicates if toolbar delete button is visible
-            toolbarSave    : false,   // indicates if toolbar save button is visible
-            selectionBorder: true,   // display border arround selection (for selectType = 'cell')
-            recordTitles   : true    // indicates if to define titles for records
-        },
-        columns: [
-            { field: 'name', caption: 'Node', size: '10%' },
-            { field: 'cost', caption: 'Cost', size: '10%' },
-            { field: 'father', caption: 'Father', size: '20%' },
-            { field: 'children', caption: 'Children', size: '40%' },
-            { field: 'goal', caption: 'Goal', size: '20%' }            
-        ]
-    });
+<div id="add-popup" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-$('#solution-table').w2grid({
-        name: 'solution-table',
-        url: { get: 'data/solution' },
-        header: 'Solution',
-        show: {
-            header         : true,  // indicates if header is visible
-            toolbar        : false,  // indicates if toolbar is visible
-            footer         : false,  // indicates if footer is visible
-            columnHeaders  : true,   // indicates if columns is visible
-            lineNumbers    : true,  // indicates if line numbers column is visible
-            expandColumn   : false,  // indicates if expand column is visible
-            selectColumn   : false,  // indicates if select column is visible
-            emptyRecords   : true,   // indicates if empty records are visible
-            toolbarReload  : false,   // indicates if toolbar reload button is visible
-            toolbarColumns : false,   // indicates if toolbar columns button is visible
-            toolbarSearch  : false,   // indicates if toolbar search controls are visible
-            toolbarAdd     : false,   // indicates if toolbar add new button is visible
-            toolbarDelete  : false,   // indicates if toolbar delete button is visible
-            toolbarSave    : false,   // indicates if toolbar save button is visible
-            selectionBorder: true,   // display border arround selection (for selectType = 'cell')
-            recordTitles   : true    // indicates if to define titles for records
-        },
-        columns: [
-            { field: 'open', caption: 'Open', size: '50%' },
-            { field: 'closed', caption: 'Closed', size: '50%' }        
-        ]
-    });
-</script>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Add new node</h3>
+            </div>
+
+            <div class="modal-body">
+                
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" id="nodeName" placeholder="Enter node name">
+                </div>
+
+                <div class="form-group">
+                    <label>Cost</label>
+                    <input type="number" class="form-control" id="nodeCost" placeholder="Enter the cost of node">
+                </div>
+
+                <div class="form-group">
+                    <label>Parent</label>
+                    <input type="text" class="form-control" id="nodeParent" placeholder="Enter node parent">
+                </div>
+
+                <div class="form-group">
+                    <label>Children</label>
+                    <input type="text" class="form-control" id="nodeChildren" placeholder="Enter node children">
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="nodeGoal"> Is goal?
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary" onclick="addNode()">Save changes</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+

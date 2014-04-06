@@ -6,6 +6,7 @@
 		width: 40%;
 		height: 100%;
 		float: left;
+		border: 1px solid #ddd;
 	}
 
 		#nodes-list {
@@ -23,7 +24,7 @@
 		width: 60%;
 		float: right;
 	}
-		#buttons {
+		.buttons {
 			margin: 5px;
 		}
 
@@ -45,3 +46,7 @@
 		#tree {
 			
 		}
+
+tbody {
+    overflow-y: auto;
+}
