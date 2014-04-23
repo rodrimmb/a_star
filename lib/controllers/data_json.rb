@@ -1,11 +1,25 @@
 class DataJson < ApplicationController
 
-  post '/example' do
-    res = "./public/res/astar.json" 
-    file = File.read(res)
-    output = JSON.parse file
-    json output
+  get '/all_searches' do
+    
   end
+
+  post '/add_search', :provides => :json do
+    data = JSON.parse params
+    # do something with the data, then…
+    halt 200, data.to_json
+  end
+
+  get '/nodes/:search' do
+
+  end
+
+  post '/add_node', :provides => :json do
+
+  end
+
+
+
 
   get '/example_json' do
     res = "./public/res/astar.json" 
@@ -32,7 +46,6 @@ class DataJson < ApplicationController
       solution << node.state.name
     end
     output = JSON.parse(solution.to_s)
-    #"#{solution}"
     json output
   end 
 

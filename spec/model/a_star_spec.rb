@@ -31,7 +31,6 @@ describe AStar do
 		expect(@a_star.search(initial_node)).to eq expected_path
 	end
 
-	
 	it 'node with two children that one of them was a goal' do
 		state_goal = Example.new(@tree[2]["cost"], @tree[2]["name"], true, [])
 		goal = Node.new(state_goal)
