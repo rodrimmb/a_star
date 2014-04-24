@@ -11,4 +11,4 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'mongo'
 gem "bson", "~> 1.9.2"
-gem 'bson_ext'
+gem 'bson_ext', "~> 1.9.0"

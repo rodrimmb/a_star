@@ -9,12 +9,19 @@ class SearchesService
 	end
 
 	def add_search(name)
-		new_search = { :name => name, :url => make_url(name), :created_on => Time.now }
-		search = @coll.insert(new_search)
+		exist = @coll.find("name" => name).to_a
+		if exist
+			new_search = { :name => name, :url => make_url(name), :created_on => Time.now }
+			@coll.insert(new_search)
+		end
 	end
 
 	def get_all_searches
-		@coll.find
+		@coll.find() 
+	end
+
+	def delete_search(search)
+		@coll.remove("url" => search)
 	end
 
 	def get_search(name)

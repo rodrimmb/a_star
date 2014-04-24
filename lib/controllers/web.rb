@@ -1,3 +1,5 @@
+require_relative './application_controller.rb'
+
 class Web < ApplicationController
 
   get '/' do 	

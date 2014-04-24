@@ -6,11 +6,18 @@ describe SearchesService do
 
 	it 'add new search to data base' do 
 		service = SearchesService.new
-		puts service.add_search('search1')
+		service.add_search('search1')
 	end
 
 	it 'view all searches' do 
 		service = SearchesService.new
-		service.get_all_searches().each { |x| puts x }
+		result = service.get_all_searches().to_a
+		puts result
+	end
+
+	it 'delete one search' do
+		service = SearchesService.new
+		puts "Borrado"
+		service.delete_search("search1")
 	end
 end
