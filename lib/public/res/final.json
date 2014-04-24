@@ -1,17 +1,32 @@
-[	
-	{ "recid": 1, "name": "A", "cost": 4, "father": null, "children": 	[{"name":"B", "path_cost":10},
-																		{"name":"C", "path_cost":10}], 
-																		"goal": false },
-	{ "recid": 2, "name": "B", "cost": 5, "father": ["A"], "children": ["D","E"],	"goal": false },
-	{ "recid": 3, "name": "C", "cost": 3, "father": ["A"], "children": ["F","G"], "goal": false },
-	{ "recid": 4, "name": "D", "cost": 7, "father": ["B"], "children": ["H","I"], "goal": false },
-	{ "recid": 5, "name": "E", "cost": 9, "father": ["B"], "children": null, "goal": false },
-	{ "recid": 6, "name": "F", "cost": 6, "father": ["C"], "children": ["I","J"],	"goal": false },
-	{ "recid": 7, "name": "G", "cost": 8, "father": ["C"], "children": ["J","K"],	"goal": false },
-	{ "recid": 8, "name": "H", "cost": 5, "father": ["D"], "children": ["L"], "goal": false },
-	{ "recid": 9, "name": "I", "cost": 4, "father": ["D","F"], "children": null, "goal": false },
-	{ "recid": 10, "name": "J", "cost": 2, "father": ["F","G"],	"children": null, "goal": false },
-	{ "recid": 11, "name": "K",	"cost": 0, "father": ["G"], "children": null,	"goal": true },
-	{ "recid": 12, "name": "L",	"cost": 7, "father": ["H"], "children": ["M"], "goal": false },
-	{ "recid": 13, "name": "M",	"cost": 0, "father": ["L"], "children": null,	"goal": true}
-]
+{
+	"name": "Example",
+	"url": "example",
+	"created_on": ISODate("2014-04-24T07:31:43.539Z"),
+	"nodes":[	
+			{   "name": "A", "cost": 4, "father": null, 
+			    "children": [
+							{"name":"B", "path_cost":1},
+							{"name":"C", "path_cost":3}
+						], 
+				"goal": false },
+
+			{   "name": "B", "cost": 5, "father": ["A"], 
+				"children": [
+							{"name":"D", "path_cost":4},
+							{"name":"E", "path_cost":2}
+				],	
+				"goal": false },
+
+			{   "name": "C", "cost": 3, "father": ["A"], 
+				"children": [
+							{"name":"F", "path_cost":10},
+							{"name":"G", "path_cost":10}
+				], "goal": false }
+	],
+
+	"solution":[	{"id":1, "open":["A"], "succesors":["B","C"],"closed":null},
+					{"id":2, "open":["B"], "succesors":["C","D","E"],"closed":["A"]}
+				],
+	"path":["A","C","G","K"]
+
+}
