@@ -46,7 +46,7 @@
                 <div class="buttons">
                     <ul class="nav nav-pills">
                       <li><a onclick="getSolution()">Solve</a></li>
-                      <li><a href="#">Next Step <span class="glyphicon glyphicon-chevron-right"></span></li>
+                      <li><a href="#">Next Step <span class="glyphicon glyphicon-chevron-right"></span></a></li>
                     </ul>
                 </div>
                 <div id ="solution">
@@ -63,34 +63,103 @@
                         <td>Closed</td>
                     </thead>
                     <tbody>
-                        <td>
-                            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                                <msub>
-                                    <mi></mi>
-                                    <mi>X</mi>
-                                </msub>
-                                <msubsup>
-                                    <mi>A</mi>
-                                    <mn>63</mn>
-                                    <mn>22</mn>
-                                </msubsup>
-                            </math>
-                        </td>
-                        <td>
-                            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                                <mi>a</mi><msup><mi>x</mi><mn>2</mn></msup>
-                            </math>
-                        </td>
-                        <td>
-                            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                                <mi>a</mi><msup><mi>x</mi><mn>2</mn></msup>
-                            </math>
-                        </td>
-                        <td>
-                            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                                <mi>a</mi><msup><mi>x</mi><mn>2</mn></msup>
-                            </math>
-                        </td>
+                        <tr>    
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <msubsup>
+                                        <mi>A</mi>
+                                        <mn>0</mn>
+                                        <mn>2</mn>
+                                    </msubsup>
+                                </math>
+                            </td>
+                            <td>
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <msub>
+                                        <mi></mi>
+                                        <mi>A</mi>
+                                    </msub>
+                                    <msubsup>
+                                        <mi>B</mi>
+                                        <mn>1</mn>
+                                        <mn>10</mn>
+                                    </msubsup>
+                                    <msub>
+                                        <mi></mi>
+                                        <mi>A</mi>
+                                    </msub>
+                                    <msubsup>
+                                        <mi>C</mi>
+                                        <mn>1</mn>
+                                        <mn>8</mn>
+                                    </msubsup>
+                                </math>
+                            </td>
+                            <td>
+                                -
+                            </td>
+                        </tr>
+                        <tr>    
+                            <td>
+                                2
+                            </td>
+                            <td>
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <msub>
+                                        <mi></mi>
+                                        <mi>A</mi>
+                                    </msub>
+                                    <msubsup>
+                                        <mi>B</mi>
+                                        <mn>1</mn>
+                                        <mn>10</mn>
+                                    </msubsup>
+                                </math>
+                            </td>
+                            <td>
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <msub>
+                                        <mi></mi>
+                                        <mi>A</mi>
+                                    </msub>
+                                    <msubsup>
+                                        <mi>C</mi>
+                                        <mn>1</mn>
+                                        <mn>8</mn>
+                                    </msubsup>
+                                    <msub>
+                                        <mi></mi>
+                                        <mi>B</mi>
+                                    </msub>
+                                    <msubsup>
+                                        <mi>D</mi>
+                                        <mn>2</mn>
+                                        <mn>8</mn>
+                                    </msubsup>
+                                    <msub>
+                                        <mi></mi>
+                                        <mi>B</mi>
+                                    </msub>
+                                    <msubsup>
+                                        <mi>E</mi>
+                                        <mn>2</mn>
+                                        <mn>10</mn>
+                                    </msubsup>
+                                </math>
+                            </td>
+                            <td>
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <msubsup>
+                                        <mi>A</mi>
+                                        <mn>0</mn>
+                                        <mn>2</mn>
+                                    </msubsup>
+                                </math>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -142,7 +211,7 @@
                         <div class="col-xs-4">
                             <input type="number" class="form-control" id="nodeChildren" placeholder="Cost of path">
                         </div>
-                        <button class="glyphicon glyphicon-plus"></button>
+                        <button class="btn btn-default glyphicon glyphicon-plus"></button>
                     </div>
                 </div>
 
