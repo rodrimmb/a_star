@@ -7,7 +7,8 @@ class NodesController < ApplicationController
 
   post '/add_node/:search' do |search|
     puts "Add new node to #{search}"
-    puts "Name of node: #{params[:name]}"
+    node = JSON.parse(request.body.read)
+    puts node
   end
 
   delete '/:search/:node_name' do |search, node|
