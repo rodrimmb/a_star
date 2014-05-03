@@ -10,7 +10,7 @@ class SearchesService
 
 	def add_search(name)
 		exist = @coll.find("name" => name).to_a
-		if exist
+		if exist.size == 0
 			new_search = { :name => name, :url => make_url(name), :created_on => Time.now }
 			@coll.insert(new_search)
 		end
