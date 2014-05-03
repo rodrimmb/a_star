@@ -21,6 +21,7 @@ class ApplicationController < Sinatra::Base
   	set :public_folder , File.expand_path('../../public', __FILE__)
 
   	before do
-  		@service = SearchesService.new
+  		@searchesService = SearchesService.new
+  		@nodesService = NodesService.new
   	end
 end
