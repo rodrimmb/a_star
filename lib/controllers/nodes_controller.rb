@@ -1,3 +1,5 @@
+require 'json'
+
 class NodesController < ApplicationController
 
   get '/all_nodes/:search' do |search|
@@ -10,8 +12,11 @@ class NodesController < ApplicationController
 
   post '/add_node/:search' do |search|
     puts "Add new node to #{search}"
+    
     node = JSON.parse(request.body.read)
+    puts node
     @nodesService.add_node(node, search)
+    halt 200
   end
 
   delete 'delete_node/:search/:node_name' do |search, node|
