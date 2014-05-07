@@ -11,7 +11,6 @@ class NodesController < ApplicationController
   post '/add_node/:search' do |search|
     puts "Add new node to #{search}"
     node = JSON.parse(request.body.read)
-
     @nodesService.add_node(node, search)
   end
 
