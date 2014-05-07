@@ -1,7 +1,7 @@
 class NodesController < ApplicationController
 
   get '/all_nodes/:search' do |search|
-    
+    @nodesService.get_all_nodes(search).to_json
   end
 
   get '/node/:search/:node' do |search, node|

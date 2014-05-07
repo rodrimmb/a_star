@@ -1,4 +1,5 @@
 require 'mongo'
+require 'json'
 
 class NodesService
 
@@ -17,7 +18,8 @@ class NodesService
 	end
 
 	def get_all_nodes(search)
-		
+		value = @coll.find("url" => search).first
+		value["nodes"]
 	end
 
 	def delete_node(node,search)
