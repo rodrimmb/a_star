@@ -5,11 +5,12 @@ class StandarState < SearchState
 
 	attr_reader :name, :children, :value
 
-	def initialize(value, name, goal, children = [])
+	def initialize(value, name, goal, children = [], search)
 		@value = value
 		@name = name
 		@goal = goal
 		@children = children
+		@search = search
 		super value
 	end
 
@@ -24,7 +25,7 @@ class StandarState < SearchState
 	def expand
 		states = []
 		children.each do |state_name|
-			#states << call to DB
+			states << @search.get_node(state_name)
 		end
 		return states
 	end

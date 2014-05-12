@@ -1,27 +1,106 @@
 {
 	"name": "Example",
 	"url": "example",
-	"created_on": ISODate("2014-04-24T07:31:43.539Z"),
 	"nodes":[	
-			{   "name": "A", "cost": 4, "father": null, 
+			{   
+				"name": "A", "cost": 4, "father": null, 
 			    "children": [
-							{"name":"B", "path_cost":1},
-							{"name":"C", "path_cost":3}
-						], 
-				"goal": false },
+					{"name":"B", "path_cost":1},
+					{"name":"C", "path_cost":1}
+				], 
+				"goal": false 
+			},
 
-			{   "name": "B", "cost": 5, "father": ["A"], 
+			{   
+				"name": "B", "cost": 5, "father": ["A"], 
 				"children": [
-							{"name":"D", "path_cost":4},
-							{"name":"E", "path_cost":2}
+					{"name":"D", "path_cost":1},
+					{"name":"E", "path_cost":1}
 				],	
-				"goal": false },
+				"goal": false 
+			},
 
-			{   "name": "C", "cost": 3, "father": ["A"], 
+			{   
+				"name": "C", "cost": 3, "father": ["A"], 
 				"children": [
-							{"name":"F", "path_cost":10},
-							{"name":"G", "path_cost":10}
-				], "goal": false }
+					{"name":"F", "path_cost":1},
+					{"name":"G", "path_cost":1}
+				], 
+				"goal": false 
+			},
+
+			{   
+				"name": "D", "cost": 7, "father": ["B"], 
+				"children": [
+					{"name":"H", "path_cost":1},
+					{"name":"I", "path_cost":1}
+				], 
+				"goal": false 
+			},
+
+			{   
+				"name": "E", "cost": 9, "father": ["B"], 
+				"children": [], 
+				"goal": false 
+			},
+
+			{   
+				"name": "F", "cost": 6, "father": ["C"], 
+				"children": [
+					{"name":"I", "path_cost":1},
+					{"name":"J", "path_cost":1}
+				], 
+				"goal": false 
+			},
+
+			{   
+				"name": "G", "cost": 8, "father": ["C"], 
+				"children": [
+					{"name":"J", "path_cost":1},
+					{"name":"K", "path_cost":1}
+				], 
+				"goal": false 
+			},
+
+			{   
+				"name": "H", "cost": 5, "father": ["D"], 
+				"children": [
+							{"name":"L", "path_cost":1}
+							], 
+				"goal": false 
+			},
+
+			{   
+				"name": "I", "cost": 4, "father": ["D", "F"], 
+				"children": [], 
+				"goal": false 
+			},
+
+			{   
+				"name": "J", "cost": 2, "father": ["F", "G"], 
+				"children": [], 
+				"goal": false 
+			},
+
+			{   
+				"name": "K", "cost": 0, "father": ["G"], 
+				"children": [], 
+				"goal": true 
+			},
+
+			{   
+				"name": "L", "cost": 7, "father": ["H"], 
+				"children": [
+					{"name":"M", "path_cost":1}
+				], 
+				"goal": false 
+			},
+
+			{   
+				"name": "M", "cost": 0, "father": ["L"], 
+				"children": [], 
+				"goal": true 
+			}
 	],
 
 	"solution":[	{"id":1, "open":["A"], "succesors":["B","C"],"closed":null},

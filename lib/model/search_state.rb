@@ -23,8 +23,4 @@ class SearchState
 	def set_value(value)
 		@value = value
 	end
-
-	def ==(state)
-		@value = state.value
-	end
 end
