@@ -3,15 +3,16 @@ require 'json'
 
 class StandarState < SearchState
 
-	attr_reader :name, :children, :value, :father
+	attr_reader :name, :children, :value, :father, :path_cost
 
-	def initialize(value, name, goal, children = [], father = [], search)
+	def initialize(value, name, goal, children = [], father = [], path_cost = 0, search)
 		@value = value
 		@name = name
 		@goal = goal
 		@children = children
 		@search = search
 		@father = father
+		@path_cost = path_cost
 		super value
 	end
 
@@ -26,7 +27,7 @@ class StandarState < SearchState
 	def expand
 		states = []
 		children.each do |child|
-			value = @search.get_node(child["name"], child["path_cost"])
+			value = @search.get_node(child["name"], child["path_cost"], name)
 			states << value
 		end
 		return states

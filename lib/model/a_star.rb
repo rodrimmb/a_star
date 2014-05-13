@@ -22,7 +22,7 @@ class AStar < SearchAlgorithm
 
 	def search(initial)
 		priority_queue = PriorityQueue.new
-		priority_queue.add_node(initial.state.value + initial.deep, initial)
+		priority_queue.add_node(initial.state.value + initial.state.path_cost, initial)
 
 		while !priority_queue.is_empty?
 			@open = priority_queue.queue
@@ -51,16 +51,23 @@ class AStar < SearchAlgorithm
 		closed = []
 		
 		@open.each do |node|
-			open << node.state.name
+			open << create_node_info(node)
 		end
 
 		@closed.each do |node|
-			closed << node.state.name
+			closed << create_node_info(node)
 		end
 
 		@operations << {"id" => @cont, "open"=> open, "closed" => closed}
-		# Quit (Only for developing)
-		#puts "#{@cont} #{@open} #{@closed}"
 		@cont += 1
+	end
+
+	def create_node_info(node)
+		{	
+			"name" => node.state.name, 
+			"father" => node.state.father, 
+			"cost" => node.state.value, 
+			"path_cost" => node.state.path_cost
+		}
 	end
 end

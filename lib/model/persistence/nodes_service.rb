@@ -3,22 +3,20 @@ require 'json'
 
 class NodesService
 
-	def initialize
-		conn = Mongo::Connection.new("localhost", 27017)
-		db = conn.db("mydb")
-		@coll = db.collection('testData')
+	def initialize(collection)
+		@collection = collection
 	end
 
 	def add_node(node, search)
 		puts "Add node to search " + search
-		@coll.update( 
+		@collection.update( 
 			{ "url" => search },
             { "$addToSet" => { "nodes" => node } }
         )
 	end
 
 	def get_all_nodes(search)
-		value = @coll.find("url" => search).first
+		value = @collection.find("url" => search).first
 		value["nodes"]
 	end
 

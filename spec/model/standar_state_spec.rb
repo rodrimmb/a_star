@@ -48,6 +48,7 @@ describe StandarState do
 		)
 
 		expect(@state.expand).to eq [state_B, state_C]
+		expect(@state.expand[0].path_cost).to eq 1
 	end
 
 
@@ -70,14 +71,16 @@ describe StandarState do
 			}
 		]		
 
-		def get_node(name, cost)
+		def get_node(name, path_cost,parent)
 			Search.get_tree.each do |node|
 				if(node["name"] == name)
 					return StandarState.new(
-						node["cost"] + cost, 
+						node["cost"], 
 						node["name"], 
 						node["goal"], 
 						node["children"], 
+						[parent],
+						path_cost,
 						self
 					)
 				end

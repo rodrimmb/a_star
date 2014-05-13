@@ -21,7 +21,8 @@ class ApplicationController < Sinatra::Base
   	set :public_folder , File.expand_path('../../public', __FILE__)
 
   	before do
-  		@searchesService = SearchesService.new
-  		@nodesService = NodesService.new
+  		@collection = SingletonDbConnection.get_instance('mydb','testData')
+  		@searchesService = SearchesService.new(@collection)
+  		@nodesService = NodesService.new(@collection)
   	end
 end

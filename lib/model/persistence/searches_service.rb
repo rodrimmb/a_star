@@ -2,14 +2,12 @@ require 'mongo'
 
 class SearchesService
 
-	def initialize
-		conn = Mongo::Connection.new("localhost", 27017)
-		db = conn.db("mydb")
-		@coll = db.collection('testData')
+	def initialize(collection)
+		@collection = collection
 	end
 
 	def add_search(name)
-		exist = @coll.find("name" => name).to_a
+		exist = @collection.find("name" => name).to_a
 		if exist.size == 0
 			new_search = { 
 				:name => name, 
@@ -19,16 +17,16 @@ class SearchesService
 				:path =>[], 
 				:created_on => Time.now 
 			}
-			@coll.insert(new_search)
+			@collection.insert(new_search)
 		end
 	end
 
 	def get_all_searches
-		@coll.find() 
+		@collection.find() 
 	end
 
 	def delete_search(search)
-		@coll.remove("url" => search)
+		@collection.remove("url" => search)
 	end
 
 	def get_search(name)

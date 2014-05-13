@@ -15,7 +15,8 @@ describe AStar do
 			SearchAStar1.get_tree[0]["name"], 
 			SearchAStar1.get_tree[0]["goal"], 
 			SearchAStar1.get_tree[0]["children"],
-			SearchAStar1.get_tree[0]["father"], 
+			SearchAStar1.get_tree[0]["father"],
+			0, 
 			SearchAStar1.new
 		)
 
@@ -30,7 +31,8 @@ describe AStar do
 			SearchAStar2.get_tree[0]["name"], 
 			SearchAStar2.get_tree[0]["goal"], 
 			SearchAStar2.get_tree[0]["children"],
-			SearchAStar2.get_tree[0]["father"], 
+			SearchAStar2.get_tree[0]["father"],
+			0, 
 			SearchAStar2.new
 		)
 
@@ -39,7 +41,8 @@ describe AStar do
 			SearchAStar2.get_tree[2]["name"], 
 			SearchAStar2.get_tree[2]["goal"], 
 			SearchAStar2.get_tree[2]["children"],
-			SearchAStar2.get_tree[2]["father"], 
+			SearchAStar2.get_tree[2]["father"],
+			1, 
 			SearchAStar2.new
 		)
 
@@ -50,6 +53,45 @@ describe AStar do
 	end
 
 	it 'tree with 3 levels and one node goal' do
+
+		state_A = StandarState.new(
+			SearchAStar3.get_tree[0]["cost"], 
+			SearchAStar3.get_tree[0]["name"], 
+			SearchAStar3.get_tree[0]["goal"], 
+			SearchAStar3.get_tree[0]["children"],
+			SearchAStar3.get_tree[0]["father"], 
+			0,
+			SearchAStar3.new
+		)
+
+		state_C = StandarState.new(
+			SearchAStar3.get_tree[2]["cost"], 
+			SearchAStar3.get_tree[2]["name"], 
+			SearchAStar3.get_tree[2]["goal"], 
+			SearchAStar3.get_tree[2]["children"],
+			SearchAStar3.get_tree[2]["father"], 
+			1,
+			SearchAStar3.new
+		)
+
+		state_G = StandarState.new(
+			SearchAStar3.get_tree[6]["cost"], 
+			SearchAStar3.get_tree[6]["name"], 
+			SearchAStar3.get_tree[6]["goal"], 
+			SearchAStar3.get_tree[6]["children"],
+			SearchAStar3.get_tree[6]["father"], 
+			2,
+			SearchAStar3.new
+		)
+
+		node_A = Node.new(state_A)
+		node_C = Node.new(state_C)
+		node_G = Node.new(state_G)
+
+		expect(@a_star.search(node_A)).to eq [node_A,node_C,node_G]
+	end
+
+	it 'tree with 3 levels return a correct JSON with the trace' do
 
 		state_A = StandarState.new(
 			SearchAStar3.get_tree[0]["cost"], 
@@ -94,14 +136,16 @@ describe AStar do
 			}
 		]		
 
-		def get_node(name, cost)
+		def get_node(name, cost, parent)
 			SearchAStar1.get_tree.each do |node|
 				if(node["name"] == name)
 					return StandarState.new(
 						node["cost"] + cost, 
 						node["name"], 
 						node["goal"], 
-						node["children"], 
+						node["children"],
+						[parent],
+						cost, 
 						self
 					)
 				end
@@ -130,14 +174,16 @@ describe AStar do
 			}
 		]		
 
-		def get_node(name, cost)
+		def get_node(name, cost, parent)
 			SearchAStar2.get_tree.each do |node|
 				if(node["name"] == name)
 					return StandarState.new(
 						node["cost"] + cost, 
 						node["name"], 
 						node["goal"], 
-						node["children"], 
+						node["children"],
+						[parent],
+						cost,
 						self
 					)
 				end
@@ -176,14 +222,16 @@ describe AStar do
 			{ "name"=> "G", "cost"=> 8, "father"=> ["C"], "children"=> [], "goal"=> true }
 		]		
 
-		def get_node(name, cost)
+		def get_node(name, cost, parent)
 			SearchAStar3.get_tree.each do |node|
 				if(node["name"] == name)
 					return StandarState.new(
 						node["cost"] + cost, 
 						node["name"], 
 						node["goal"], 
-						node["children"], 
+						node["children"],
+						[parent],
+						cost, 
 						self
 					)
 				end
