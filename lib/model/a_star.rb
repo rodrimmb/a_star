@@ -36,7 +36,7 @@ class AStar < SearchAlgorithm
 
 			n.expand.each do |child|
 				if not @closed.include?(child)
-					priority_queue.add_node(child.state.value + child.deep, child)
+					priority_queue.add_node(child.state.value, child)
 				end
 			end
 			@closed << n
