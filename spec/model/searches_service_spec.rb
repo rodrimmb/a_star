@@ -12,12 +12,12 @@ describe SearchesService do
 	it 'view all searches' do 
 		service = SearchesService.new
 		result = service.get_all_searches().to_a
-		puts result
+		#puts result
 	end
 
 	it 'delete one search' do
 		service = SearchesService.new
-		puts "Borrado"
+		#puts "Borrado"
 		service.delete_search("search1")
 	end
 end
