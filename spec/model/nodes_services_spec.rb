@@ -19,7 +19,5 @@ describe NodesService do
 		expect(node["cost"]).to eq 4
 		expect(node["goal"]).to be_false
 		expect(node["children"]).to eq [{"name"=>"B","path_cost"=>1.0},{"name"=>"C","path_cost"=>1.0}]
-	end
-	
-	
+	end	
 end
