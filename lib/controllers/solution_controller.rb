@@ -1,21 +1,27 @@
 require_relative './application_controller.rb'
+require 'json'
 
 class SolutionController < ApplicationController
 
-    get '/solution/:search' do |search|
-  		a_star = AStar.new
-  		
-  		collection = SingletonDbConnection.get_instance('mydb','testData')
-  		node_service = Nodeservice.new(collection)
-  		nodes = NodesHandler.new(search, nodes_service)
+    get '/:search' do |search|
+    		a_star = AStar.new
+        text = []
+    		
+    		collection = SingletonDbConnection.get_instance('mydb','testData')
+    		nodes_service = NodesService.new(collection)
+    		nodes = NodesHandler.new(search, nodes_service)
 
-  		state = 
-  		node = Node.new(state)
-  		solution = a_star.search(node)
+    		state = nodes.get_first_node()
+    		node = Node.new(state)
+    		solution = a_star.search(node)
 
+        solution.each do |n|
+            text << n.state.name
+        end
+        json text      
     end
 
-    get '/solution_path/:search' do |search|
+    get '/path/:search' do |search|
     
     end
 end

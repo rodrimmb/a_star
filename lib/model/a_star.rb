@@ -23,7 +23,7 @@ class AStar < SearchAlgorithm
 
 	def search(initial)
 		priority_queue = PriorityQueue.new
-		priority_queue.add_node(initial.state.value + initial.state.path_cost, initial)
+		priority_queue.add_node(initial.state.value.to_i + initial.state.path_cost.to_i, initial)
 
 		while !priority_queue.is_empty?
 			@open = priority_queue.queue

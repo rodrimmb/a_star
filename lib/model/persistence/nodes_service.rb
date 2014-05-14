@@ -33,6 +33,11 @@ class NodesService
 		end
 	end
 
+	def get_first_node(search)
+		value = @collection.find("url" => search).first
+		value["nodes"][0]
+	end
+
 	def update_node(node,search)
 		
 	end

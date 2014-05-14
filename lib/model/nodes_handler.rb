@@ -9,7 +9,18 @@ class NodesHandler
 
 	def get_node(node_name, path_cost = 0, parent = "_")
 		node = @nodes_service.get_node(node_name,@search_name)
-		output = StandarState.new(
+		create_state_of(node, path_cost, parent)
+	end
+
+	def get_first_node()
+		node = @nodes_service.get_first_node(@search_name)
+		create_state_of(node)
+	end
+
+	private
+
+	def create_state_of(node, path_cost = 0, parent = "_")
+		StandarState.new(
 			node["cost"], 
 			node["name"], 
 			node["goal"], 

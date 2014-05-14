@@ -20,4 +20,13 @@ describe NodesService do
 		expect(node["goal"]).to be_false
 		expect(node["children"]).to eq [{"name"=>"B","path_cost"=>1.0},{"name"=>"C","path_cost"=>1.0}]
 	end	
+
+	it 'can get the first node' do
+		node = @nodes_service.get_first_node('example')
+
+		expect(node["name"]).to eq "A"
+		expect(node["cost"]).to eq 4
+		expect(node["goal"]).to be_false
+		expect(node["children"]).to eq [{"name"=>"B","path_cost"=>1.0},{"name"=>"C","path_cost"=>1.0}]
+	end
 end
