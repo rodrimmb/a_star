@@ -1,4 +1,5 @@
 require 'mongo'
+require 'json'
 
 class SearchesService
 
@@ -19,6 +20,22 @@ class SearchesService
 			}
 			@collection.insert(new_search)
 		end
+	end
+
+	def set_solution(search, solution)
+		@collection.update( 
+			{ "url" => search },
+            { "$set" => { "solution" => solution } }
+        )
+	end
+
+	def get_solution(search)
+		search = @collection.find("url" => search).to_a
+		search[0]["solution"]
+	end
+
+	def remove_solution(search)
+		set_solution(search,[])
 	end
 
 	def get_all_searches
