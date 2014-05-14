@@ -5,7 +5,7 @@ class NodesHandler
 		@nodeService = new.NodeService
 	end
 
-	def get_node(node_name)
+	def get_node(node_name, path_cost, parent)
 		@nodeService.get_node(node_name,@search)
 	end
 

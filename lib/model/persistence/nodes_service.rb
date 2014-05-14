@@ -24,8 +24,13 @@ class NodesService
 		
 	end
 
-	def get_node(node,search)
-		
+	def get_node(node_name,search)
+		value = @collection.find("url" => search).first
+		value["nodes"].each do |node|
+			if node["name"] == node_name
+				return node
+			end
+		end
 	end
 
 	def update_node(node,search)

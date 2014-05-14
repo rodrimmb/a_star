@@ -6,6 +6,7 @@
 	devolvera la ruta de los nodos por los que pasa para encontrar 
 	la meta.
 =end
+
 require_relative './search_algorithm'
 require_relative './priority_queue.rb'
 

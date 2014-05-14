@@ -1,5 +1,5 @@
 {
-	"name": "Example",
+	"name": "test",
 	"url": "example",
 	"nodes":[	
 			{   
@@ -102,10 +102,6 @@
 				"goal": true 
 			}
 	],
-
-	"solution":[	{"id":1, "open":[{"name":"A","cost":10,"path_cost":2,"father":"_"}], "succesors":["B","C"],"closed":null},
-					{"id":2, "open":["B"], "succesors":["C","D","E"],"closed":["A"]}
-				],
-	"path":["A","C","G","K"]
-
+	"solution":[],
+	"path":[]
 }
