@@ -27,11 +27,10 @@ class AStar < SearchAlgorithm
 
 		while !priority_queue.is_empty?
 			@open = priority_queue.queue
-			generate_operation
-
 			n = priority_queue.next
 
 			if n.is_goal? 
+				generate_operation(n, priority_queue.queue)
 				return n.path
 			end
 
@@ -40,6 +39,7 @@ class AStar < SearchAlgorithm
 					priority_queue.add_node(child.state.value, child)
 				end
 			end
+			generate_operation(n, priority_queue.queue)
 			@closed << n
 		end
 		raise "Solution for A* not found"
@@ -47,26 +47,33 @@ class AStar < SearchAlgorithm
 
 	private 
 
-	def generate_operation
-		open = []
-		closed = []
+	def generate_operation(node, successors)
+		open = create_node_info(node)
+
+		list_successors = []
+		successors.each do |n|
+			list_successors << create_node_info(n)
+		end
+
+		list_closed = []
+		@closed.each do |n|
+			list_closed << create_node_info(n)
+		end
+
+		@operations << {
+			"id" => @cont, 
+			"open"=> open, 
+			"successors" => list_successors,
+			"closed" => list_closed
+		}
 		
-		@open.each do |node|
-			open << create_node_info(node)
-		end
-
-		@closed.each do |node|
-			closed << create_node_info(node)
-		end
-
-		@operations << {"id" => @cont, "open"=> open, "closed" => closed}
 		@cont += 1
 	end
 
 	def create_node_info(node)
 		{	
 			"name" => node.state.name, 
-			"father" => node.state.father, 
+			"father" => node.state.father[0], 
 			"cost" => node.state.value, 
 			"path_cost" => node.state.path_cost
 		}
