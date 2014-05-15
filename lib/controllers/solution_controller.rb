@@ -8,7 +8,7 @@ class SolutionController < ApplicationController
     end
 
     get '/path/:search' do |search|
-        
+        json obtain_path(search)
     end
 
     private
@@ -31,5 +31,17 @@ class SolutionController < ApplicationController
         else
             @searchesService.get_solution(search)
         end
+    end
+
+    def obtain_path(search)
+        a_star = AStar.new
+        result = []
+        nodes = NodesHandler.new(search, @nodesService)
+
+        state = nodes.get_first_node()
+        node = Node.new(state)
+        solution = a_star.search(node)
+
+        a_star.operations
     end
 end

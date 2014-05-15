@@ -17,4 +17,8 @@ describe SearchesService do
 		@searches_service.remove_solution('example')
 		expect(@searches_service.get_solution('example')).to eq []
 	end
+
+	it 'can return the steps that are followed to get a solution' do
+
+	end
 end
