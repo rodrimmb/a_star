@@ -27,13 +27,12 @@ class StandarState < SearchState
 	def expand
 		states = []
 		children.each do |child|
-			value = @search.get_node(child["name"], child["path_cost"], name)
-			states << value
+			states << @search.get_node(child["name"], child["path_cost"], name)
 		end
 		return states
 	end
 
 	def ==(state)
-		@name == state.name #&& @value == state.value
+		@name == state.name
 	end
 end

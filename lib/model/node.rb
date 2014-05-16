@@ -54,9 +54,10 @@ class Node
 
 	def expand
 		nodes = []
-		if not @expanded and state.has_children?
-			state.expand.each do |state|
-				nodes << Node.new(state, self)
+		if not @expanded and @state.has_children?
+			@state.expand.each do |s|
+				s.path_cost = @state.path_cost.to_i + s.path_cost.to_i
+				nodes << Node.new(s, self)
 			end
 			set_children(nodes)
 			expanded
@@ -66,6 +67,14 @@ class Node
 
 	def has_children?
 		state.has_children?
+	end
+
+	def has_parent?
+		if self.parent
+			true
+		else
+			false
+		end
 	end
 
 	def path

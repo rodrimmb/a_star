@@ -25,6 +25,14 @@ class PriorityQueue
 		list
 	end
 
+	def delete(node)
+		@queue.each do |element|
+			if node == element[2]
+				@queue.delete(element)
+			end
+		end
+	end
+
 	def take_the_best(priority, node)
 		@queue.each do |element|
 			if element[2] == node

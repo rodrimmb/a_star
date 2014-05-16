@@ -17,14 +17,13 @@ class AStar < SearchAlgorithm
 	def initialize()
 		@open = []
 		@closed = []
-		@expanded = []
 		@operations = []
 		@cont = 1
 	end
 
 	def search(initial)
 		priority_queue = PriorityQueue.new
-		priority_queue.add_node(initial.state.value.to_i + initial.state.path_cost.to_i, initial)
+		priority_queue.add_node(initial.state.value.to_i, initial)
 
 		while !priority_queue.is_empty?
 			# Open list has the nodes sort by their f(x)
@@ -46,7 +45,23 @@ class AStar < SearchAlgorithm
 			n.expand.each do |child|
 				# we have to check if the f(x) score is te shortest distance from start to current node (child)
 
-				if not @closed.include?(child)
+				# if I have the child node in the open list I have to check which is the best and take it to open list
+				if @open.include?(child)
+					current = get_node_from_list(child,@open)
+					if child < current
+						priority_queue.delete(current)
+						priority_queue.add_node(child.state.value.to_i + child.state.path_cost.to_i, child)
+					end
+					# if I have the child node in the closed list I have to check which is the best and take it to open list
+					# and remove from the closed list
+				elsif @closed.include?(child)
+					current = get_node_from_list(child,@closed) 
+					if child < current
+						@closed.delete(current)
+						priority_queue.add_node(child.state.value + child.state.path_cost, child)
+					end
+				elsif
+					# if the node is not in open neither closed, I add it to priority queue
 					priority_queue.add_node(child.state.value.to_i + child.state.path_cost.to_i, child)
 				end
 			end
@@ -57,6 +72,14 @@ class AStar < SearchAlgorithm
 	end
 
 	private 
+
+	def get_node_from_list(node, list)
+		list.each do |element|
+			if element == node
+				return element
+			end
+		end
+	end 
 
 	def generate_operation(node, successors)
 		open = create_node_info(node)

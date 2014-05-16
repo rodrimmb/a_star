@@ -35,11 +35,6 @@ describe Node do
 		it 'the path is an arry with the state' do
 			expect(@node.path).to eq [@node]
 		end
-
-		it 'can expand a node and obtain its children' do
-			expected_children = [Node.new(@state_a,@node),Node.new(@state_b,@node)]
-			expect(@node.expand).to eq expected_children
-		end
 	end
 
 	context 'node with one child' do 

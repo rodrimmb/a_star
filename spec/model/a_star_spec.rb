@@ -127,6 +127,23 @@ describe AStar do
 		expect(@a_star.search(node_A)).to eq [node_A,node_C,node_G]
 	end
 
+	it 'real problem' do
+
+		state_A = StandarState.new(
+			SearchAStar4.get_tree[0]["cost"], 
+			SearchAStar4.get_tree[0]["name"], 
+			SearchAStar4.get_tree[0]["goal"], 
+			SearchAStar4.get_tree[0]["children"],
+			SearchAStar4.get_tree[0]["father"], 
+			SearchAStar4.new
+		)
+
+		node_A = Node.new(state_A)
+
+		puts @a_star.search(node_A)
+		#expect(@a_star.search(node_A)).to eq [node_A,node_C,node_G]
+	end
+
 	private
 
 	class SearchAStar1
@@ -140,7 +157,7 @@ describe AStar do
 			SearchAStar1.get_tree.each do |node|
 				if(node["name"] == name)
 					return StandarState.new(
-						node["cost"] + cost, 
+						node["cost"], 
 						node["name"], 
 						node["goal"], 
 						node["children"],
@@ -178,7 +195,7 @@ describe AStar do
 			SearchAStar2.get_tree.each do |node|
 				if(node["name"] == name)
 					return StandarState.new(
-						node["cost"] + cost, 
+						node["cost"], 
 						node["name"], 
 						node["goal"], 
 						node["children"],
@@ -226,7 +243,7 @@ describe AStar do
 			SearchAStar3.get_tree.each do |node|
 				if(node["name"] == name)
 					return StandarState.new(
-						node["cost"] + cost, 
+						node["cost"], 
 						node["name"], 
 						node["goal"], 
 						node["children"],
@@ -243,4 +260,119 @@ describe AStar do
 		end
 	end
 	
+
+	class SearchAStar4
+
+		@tree = [
+			{ 	"name"=> "A", "cost"=> 4, "father"=> [], 
+				"children"=> [
+					{"name" => "B", "path_cost" => 1},
+					{"name" => "C", "path_cost" => 1}
+				], "goal"=> false 
+			},
+			{ 	"name"=> "B", "cost"=> 5, "father"=> ["A"], 
+				"children"=> [
+					{"name" => "D", "path_cost" => 1},
+					{"name" => "E", "path_cost" => 1}
+				],	"goal"=> false 
+			},
+			{ 	"name"=> "C", "cost"=> 3, "father"=> ["A"], 
+				"children"=> [
+					{"name" => "F", "path_cost" => 1},
+					{"name" => "G", "path_cost" => 1}
+				], "goal"=> false 
+			},
+			{   
+				"name"=> "D", "cost"=> 7, "father"=> ["B"], 
+				"children"=> [
+					{"name"=>"H", "path_cost"=>1},
+					{"name"=>"I", "path_cost"=>1}
+				], 
+				"goal"=> false 
+			},
+
+			{   
+				"name"=> "E", "cost"=> 9, "father"=> ["B"], 
+				"children"=> [], 
+				"goal"=> false 
+			},
+
+			{   
+				"name"=> "F", "cost"=> 6, "father"=> ["C"], 
+				"children"=> [
+					{"name"=>"I", "path_cost"=>1},
+					{"name"=>"J", "path_cost"=>1}
+				], 
+				"goal"=> false 
+			},
+
+			{   
+				"name"=> "G", "cost"=> 8, "father"=> ["C"], 
+				"children"=> [
+					{"name"=>"J", "path_cost"=>1},
+					{"name"=>"K", "path_cost"=>1}
+				], 
+				"goal"=> false 
+			},
+			{   
+				"name"=> "H", "cost"=> 5, "father"=> ["D"], 
+				"children"=> [
+							{"name"=>"L", "path_cost"=>1}
+							], 
+				"goal"=> false 
+			},
+
+			{   
+				"name"=> "I", "cost"=> 4, "father"=> ["D", "F"], 
+				"children"=> [], 
+				"goal"=> false 
+			},
+
+			{   
+				"name"=> "J", "cost"=> 2, "father"=> ["F", "G"], 
+				"children"=> [], 
+				"goal"=> false 
+			},
+
+			{   
+				"name"=> "K", "cost"=> 0, "father"=> ["G"], 
+				"children"=> [], 
+				"goal"=> true 
+			},
+
+			{   
+				"name"=> "L", "cost"=> 7, "father"=> ["H"], 
+				"children"=> [
+					{"name"=>"M", "path_cost"=>1}
+				], 
+				"goal"=> false 
+			},
+
+			{   
+				"name"=> "M", "cost"=> 0, "father"=> ["L"], 
+				"children"=> [], 
+				"goal"=> true 
+			}
+		]		
+
+		def get_node(name, cost, parent)
+			SearchAStar4.get_tree.each do |node|
+				if(node["name"] == name)
+					return StandarState.new(
+						node["cost"], 
+						node["name"], 
+						node["goal"], 
+						node["children"],
+						[parent],
+						cost, 
+						self
+					)
+				end
+			end
+		end
+
+		def self.get_tree
+			@tree
+		end
+	end
 end
