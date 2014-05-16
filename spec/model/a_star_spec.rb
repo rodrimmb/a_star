@@ -127,23 +127,6 @@ describe AStar do
 		expect(@a_star.search(node_A)).to eq [node_A,node_C,node_G]
 	end
 
-	it 'real problem' do
-
-		state_A = StandarState.new(
-			SearchAStar4.get_tree[0]["cost"], 
-			SearchAStar4.get_tree[0]["name"], 
-			SearchAStar4.get_tree[0]["goal"], 
-			SearchAStar4.get_tree[0]["children"],
-			SearchAStar4.get_tree[0]["father"], 
-			SearchAStar4.new
-		)
-
-		node_A = Node.new(state_A)
-
-		puts @a_star.search(node_A)
-		#expect(@a_star.search(node_A)).to eq [node_A,node_C,node_G]
-	end
-
 	private
 
 	class SearchAStar1

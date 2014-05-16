@@ -17,6 +17,7 @@ class AStar < SearchAlgorithm
 	def initialize()
 		@open = []
 		@closed = []
+		@successors = []
 		@operations = []
 		@cont = 1
 	end
@@ -38,13 +39,9 @@ class AStar < SearchAlgorithm
 				return n.path
 			end
 
-			# The node goes from open to closed list
-			@open.delete(n)
-			@closed << n
-
 			n.expand.each do |child|
+				@successors << child
 				# we have to check if the f(x) score is te shortest distance from start to current node (child)
-
 				# if I have the child node in the open list I have to check which is the best and take it to open list
 				if @open.include?(child)
 					current = get_node_from_list(child,@open)
@@ -65,6 +62,11 @@ class AStar < SearchAlgorithm
 					priority_queue.add_node(child.state.value.to_i + child.state.path_cost.to_i, child)
 				end
 			end
+			generate_operation(@open, @successors, @closed)
+			# The node goes from open to closed list
+			@open.delete(n)
+			@successors = []
+			@closed << n
 			#generate_operation(n, priority_queue.queue)
 			
 		end
@@ -81,8 +83,11 @@ class AStar < SearchAlgorithm
 		end
 	end 
 
-	def generate_operation(node, successors)
-		open = create_node_info(node)
+	def generate_operation(open, successors, closed)
+		list_open = []
+		open.each do |n|
+			list_open << create_node_info(n)
+		end
 
 		list_successors = []
 		successors.each do |n|
@@ -96,7 +101,7 @@ class AStar < SearchAlgorithm
 
 		@operations << {
 			"id" => @cont, 
-			"open"=> open, 
+			"open"=> list_open, 
 			"successors" => list_successors,
 			"closed" => list_closed
 		}
@@ -109,7 +114,8 @@ class AStar < SearchAlgorithm
 			"name" => node.state.name, 
 			"father" => node.state.father[0], 
 			"cost" => node.state.value, 
-			"path_cost" => node.state.path_cost
+			"path_cost" => node.state.path_cost,
+			"deleted" => node.state.deleted
 		}
 	end
 end

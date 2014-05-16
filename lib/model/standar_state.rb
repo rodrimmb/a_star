@@ -3,9 +3,9 @@ require 'json'
 
 class StandarState < SearchState
 
-	attr_accessor :name, :children, :value, :father, :path_cost
+	attr_accessor :name, :children, :value, :father, :path_cost, :deleted
 
-	def initialize(value, name, goal, children = [], father = [], path_cost = 0, search)
+	def initialize(value, name, goal, children = [], father = [], path_cost = 0, deleted = false, search)
 		@value = value
 		@name = name
 		@goal = goal
@@ -13,6 +13,7 @@ class StandarState < SearchState
 		@search = search
 		@father = father
 		@path_cost = path_cost
+		@deleted = deleted
 		super value
 	end
 
