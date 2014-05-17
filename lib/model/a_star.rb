@@ -35,7 +35,7 @@ class AStar < SearchAlgorithm
 
 			# Check if the node is a end case
 			if n.is_goal? 
-				#generate_operation(n, priority_queue.queue)
+				generate_operation(@open, [], [])
 				return n.path
 			end
 
@@ -45,35 +45,44 @@ class AStar < SearchAlgorithm
 				# if I have the child node in the open list I have to check which is the best and take it to open list
 				if @open.include?(child)
 					current = get_node_from_list(child,@open)
-					if child < current
+
+					if value_of(child) < value_of(current)
 						priority_queue.delete(current)
-						priority_queue.add_node(child.state.value.to_i + child.state.path_cost.to_i, child)
+						priority_queue.add_node(value_of(child), child)
 					end
 					# if I have the child node in the closed list I have to check which is the best and take it to open list
 					# and remove from the closed list
 				elsif @closed.include?(child)
-					current = get_node_from_list(child,@closed) 
-					if child < current
+					current = get_node_from_list(child, @closed) 
+					
+					if value_of(child) < value_of(current)
 						@closed.delete(current)
-						priority_queue.add_node(child.state.value + child.state.path_cost, child)
+						priority_queue.add_node(value_of(child), child)
 					end
-				elsif
+				else
 					# if the node is not in open neither closed, I add it to priority queue
-					priority_queue.add_node(child.state.value.to_i + child.state.path_cost.to_i, child)
+					priority_queue.add_node(value_of(child), child)
 				end
 			end
-			generate_operation(@open, @successors, @closed)
 			# The node goes from open to closed list
-			@open.delete(n)
-			@successors = []
 			@closed << n
-			#generate_operation(n, priority_queue.queue)
+
+			generate_operation(@open, @successors, @closed)
 			
+			# remove node from open list
+			@open.delete(n)
+
+			# Successors come back to be empty
+			@successors = []
 		end
 		raise "Solution for A* not found"
 	end
 
 	private 
+
+	def value_of(node)
+		node.state.value.to_i + node.state.path_cost.to_i
+	end
 
 	def get_node_from_list(node, list)
 		list.each do |element|
@@ -95,7 +104,7 @@ class AStar < SearchAlgorithm
 		end
 
 		list_closed = []
-		@closed.each do |n|
+		closed.each do |n|
 			list_closed << create_node_info(n)
 		end
 
@@ -113,7 +122,7 @@ class AStar < SearchAlgorithm
 		{	
 			"name" => node.state.name, 
 			"father" => node.state.father[0], 
-			"cost" => node.state.value, 
+			"cost" => node.state.value.to_i + node.state.path_cost.to_i, 
 			"path_cost" => node.state.path_cost,
 			"deleted" => node.state.deleted
 		}

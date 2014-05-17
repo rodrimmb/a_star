@@ -4,8 +4,10 @@ class PriorityQueue
 		@queue = []
 	end
 	def add_node(priority, node)
-		if not take_the_best(priority,node) then @queue << [priority, @queue.length, node] end
-        @queue.sort!
+		@queue << [priority, @queue.length, node]
+        @queue.sort_by! do |item|
+	    	item[0]
+		end 
         self
 	end
 
