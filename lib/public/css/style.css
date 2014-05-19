@@ -7,7 +7,7 @@ td button{
 }
 
 	#left-content {
-		width: 40%;
+		width: 45%;
 		height: 100%;
 		float: left;
 		border-right: 1px solid #ddd;
@@ -34,7 +34,7 @@ td button{
 
 	#right-content {
 		height: 100%;
-		width: 60%;
+		width: 55%;
 		float: right;
 	}
 
@@ -43,5 +43,5 @@ td button{
 		}
 
 .buttons {
-			margin: 5px;
+	margin: 5px;
 }
