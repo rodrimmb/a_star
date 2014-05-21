@@ -34,14 +34,19 @@ class SolutionController < ApplicationController
     end
 
     def obtain_path(search)
-        a_star = AStar.new
-        result = []
-        nodes = NodesHandler.new(search, @nodesService)
+        if @searchesService.get_steps(search) == []
+            a_star = AStar.new
+            nodes = NodesHandler.new(search, @nodesService)
 
-        state = nodes.get_first_node()
-        node = Node.new(state)
-        solution = a_star.search(node)
+            state = nodes.get_first_node()
+            node = Node.new(state)
+            a_star.search(node)
 
-        a_star.operations
+            result = a_star.operations
+            @searchesService.set_steps(search,result)
+            result
+        else
+            @searchesService.get_steps(search)
+        end
     end
 end

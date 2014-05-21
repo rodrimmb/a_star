@@ -38,6 +38,22 @@ class SearchesService
 		set_solution(search,[])
 	end
 
+	def set_steps(search, steps)
+		@collection.update( 
+			{ "url" => search },
+            { "$set" => { "path" => steps } }
+        )
+	end
+
+	def get_steps(search)
+		search = @collection.find("url" => search).to_a
+		search[0]["path"]
+	end
+
+	def remove_steps(search)
+		set_steps(search,[])
+	end
+
 	def get_all_searches
 		@collection.find() 
 	end
