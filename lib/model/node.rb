@@ -103,6 +103,14 @@ class Node
 		state == node.state
 	end
 
+	def !=(node)
+		if node == nil
+			true
+		else
+			false
+		end
+	end
+
 	def >(node)
 		if state.value > node.state.value
 			return true

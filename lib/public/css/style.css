@@ -10,7 +10,7 @@ td button{
 		width: 45%;
 		height: 100%;
 		float: left;
-		border-right: 1px solid #ddd;
+		/*border-right: 1px solid #ddd;*/
 	}
 
 		#table-nodes{

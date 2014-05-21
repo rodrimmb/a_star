@@ -39,24 +39,32 @@ class AStar < SearchAlgorithm
 				return n.path
 			end
 
+			node_to_delete = nil
+
 			n.expand.each do |child|
 				@successors << child
 				# we have to check if the f(x) score is te shortest distance from start to current node (child)
 				# if I have the child node in the open list I have to check which is the best and take it to open list
 				if @open.include?(child)
 					current = get_node_from_list(child,@open)
-
+					
+					@successors[@successors.find_index(child)].state.deleted = true
 					if value_of(child) < value_of(current)
 						priority_queue.delete(current)
 						priority_queue.add_node(value_of(child), child)
+						
+						@successors[@successors.find_index(child)].state.deleted = false
+						@open[@open.find_index(child)].state.deleted = true
 					end
 					# if I have the child node in the closed list I have to check which is the best and take it to open list
 					# and remove from the closed list
 				elsif @closed.include?(child)
 					current = get_node_from_list(child, @closed) 
 					
+					@closed[@closed.find_index(child)].state.deleted = true
 					if value_of(child) < value_of(current)
-						@closed.delete(current)
+						# save the node to delet it when the trace will be save
+						node_to_delete = current
 						priority_queue.add_node(value_of(child), child)
 					end
 				else
@@ -68,6 +76,10 @@ class AStar < SearchAlgorithm
 			@closed << n
 
 			generate_operation(@open, @successors, @closed)
+
+			if node_to_delete != nil
+				@closed.delete(node_to_delete)
+			end
 			
 			# remove node from open list
 			@open.delete(n)
