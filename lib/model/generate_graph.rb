@@ -6,20 +6,40 @@ class GenerateGraph
 	end
 
 	def get_svg
-		a = @graph.add_nodes(
-				"A", 
-				:label => "{A|2}", 
-				:style => "filled, rounded",
-				:shape => "record", 
-				:fillcolor => "#294b76",
+		new_node({"name" => "A", "cost" => 5})
+		new_node({"name" => "B", "cost" => 12})
+		new_node({"name" => "C", "cost" => 2})
+
+		@graph.add_edges("A","B", 
+			:arrowhead=>"open", 
+			:fontname=>"Trebuchet MS", 
+			:fontsize=>"15",
+			:label => "8"
+		)
+
+		@graph.add_edges("A","C", 
+			:arrowhead=>"open", 
+			:fontname=>"Trebuchet MS", 
+			:fontsize=>"15",
+			:label => "4"
+		)
+
+		@graph.output(:svg => "String.svg")
+		@graph.save(:svg => String)
+	end
+
+	private
+
+	def new_node(node)
+		@graph.add_nodes(
+				"#{node["name"]}",
+				:id => "#{node["name"]}", 
+				:label => "{#{node["name"]}|#{node["cost"]}}", 
+				:style => "filled,rounded",
+				:shape => "record",
 				:fontname => "Trebuchet MS",
+				:fillcolor => "#428bca",
 				:fontcolor => "white"
 			)
-		b = @graph.add_nodes("B", :label => "{B|5}", :style=>"rounded",:shape=>"record")
-
-		@graph.add_edges(a,b)
-
-		@graph.save(:svg => String)
-		@graph.output(:svg => "String.svg")
 	end
 end
