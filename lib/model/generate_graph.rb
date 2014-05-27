@@ -5,24 +5,17 @@ class GenerateGraph
 		@graph = GraphViz.new("G", :type => :digraph)
 	end
 
-	def get_svg
-		new_node({"name" => "A", "cost" => 5})
-		new_node({"name" => "B", "cost" => 12})
-		new_node({"name" => "C", "cost" => 2})
+	def get_svg(nodes)
 
-		@graph.add_edges("A","B", 
-			:arrowhead=>"open", 
-			:fontname=>"Trebuchet MS", 
-			:fontsize=>"15",
-			:label => "8"
-		)
+		puts nodes
 
-		@graph.add_edges("A","C", 
-			:arrowhead=>"open", 
-			:fontname=>"Trebuchet MS", 
-			:fontsize=>"15",
-			:label => "4"
-		)
+		nodes.each do |node|
+			new_node(node)
+		end
+
+		nodes.each do |node|
+			create_links(node)
+		end
 
 		@graph.output(:svg => "String.svg")
 		@graph.save(:svg => String)
@@ -37,9 +30,22 @@ class GenerateGraph
 				:label => "{#{node["name"]}|#{node["cost"]}}", 
 				:style => "filled,rounded",
 				:shape => "record",
-				:fontname => "Trebuchet MS",
 				:fillcolor => "#428bca",
 				:fontcolor => "white"
 			)
+	end
+
+	def create_links(node)
+		father = node["name"]
+
+		node["children"].each do |child|
+			@graph.add_edges(
+				father,
+				child["name"], 
+				:arrowhead=>"open", 
+				:fontsize=>"15",
+				:label => "#{child["path_cost"]}"
+			)
+		end
 	end
 end

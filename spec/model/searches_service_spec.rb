@@ -18,7 +18,7 @@ describe SearchesService do
 		expect(@searches_service.get_solution('example')).to eq []
 	end
 
-	it 'can return the steps that are followed to get a solution' do
-
+	it 'can return all nodes' do
+		expect(@searches_service.get_search_nodes('example').size).to eq 13
 	end
 end

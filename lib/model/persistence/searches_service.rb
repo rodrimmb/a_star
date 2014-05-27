@@ -22,6 +22,11 @@ class SearchesService
 		end
 	end
 
+	def get_search_nodes(name)
+		search = @collection.find("url" => name).to_a
+		search[0]["nodes"]
+	end
+
 	def set_solution(search, solution)
 		@collection.update( 
 			{ "url" => search },
@@ -60,10 +65,6 @@ class SearchesService
 
 	def delete_search(search)
 		@collection.remove("url" => search)
-	end
-
-	def get_search(name)
-		search = Posts.find( :_id => post_id ).first
 	end
 
 	private
