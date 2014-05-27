@@ -2,6 +2,7 @@ require 'model/generate_graph'
 
 describe GenerateGraph do 
 	it 'genrate a graph' do
-		GenerateGraph.creator
+		g = GenerateGraph.new
+		puts g.get_svg
 	end
 end
