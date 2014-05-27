@@ -11,6 +11,12 @@ class SolutionController < ApplicationController
         json obtain_path(search)
     end
 
+    get '/graph/:search' do |search|
+        g = GenerateGraph.new
+        nodes = @searchesService.get_search_nodes(search)
+        g.get_svg(nodes)
+    end
+
     private
 
     def obtain_solution(search)

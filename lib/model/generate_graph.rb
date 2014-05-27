@@ -2,13 +2,10 @@ require "graphviz"
 
 class GenerateGraph
 	def initialize
-		@graph = GraphViz.new("G", :type => :digraph)
+		@graph = GraphViz.new(:type => :digraph)
 	end
 
 	def get_svg(nodes)
-
-		puts nodes
-
 		nodes.each do |node|
 			new_node(node)
 		end
@@ -16,8 +13,7 @@ class GenerateGraph
 		nodes.each do |node|
 			create_links(node)
 		end
-
-		@graph.output(:svg => "String.svg")
+		
 		@graph.save(:svg => String)
 	end
 
