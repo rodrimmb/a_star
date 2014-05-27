@@ -103,11 +103,5 @@
 			}
 	],
 	"solution":[],
-	"path":[
-	{ "id" : 1, 
-	"open" : [ { "name" : "S", "father" : "_", "cost" : 40, "path_cost" : 0, "deleted" : false } ], 
-	"successors" : [ { "name" : "D", "father" : "S", "cost" : 35, "path_cost" : 20, "deleted" : false }, { "name" : "E", "father" : "S", "cost" : 38, "path_cost" : 10, "deleted" : false }, { "name" : "C", "father" : "S", "cost" : 40, "path_cost" : 30, "deleted" : false } ], 
-	"closed" : [ { "name" : "S", "father" : "_", "cost" : 40, "path_cost" : 0, "deleted" : false } ] }, 
-	{ "id" : 2, "open" : [ { "name" : "D", "father" : "S", "cost" : 35, "path_cost" : 20, "deleted" : false }, { "name" : "E", "father" : "S", "cost" : 38, "path_cost" : 10, "deleted" : false }, { "name" : "C", "father" : "S", "cost" : 40, "path_cost" : 30, "deleted" : true } ], "successors" : [ { "name" : "B", "father" : "D", "cost" : 41, "path_cost" : 23, "deleted" : false }, { "name" : "C", "father" : "D", "cost" : 39, "path_cost" : 29, "deleted" : false } ], "closed" : [ { "name" : "S", "father" : "_", "cost" : 40, "path_cost" : 0, "deleted" : false }, { "name" : "D", "father" : "S", "cost" : 35, "path_cost" : 20, "deleted" : false } ] }, { "id" : 3, "open" : [ { "name" : "E", "father" : "S", "cost" : 38, "path_cost" : 10, "deleted" : false }, { "name" : "C", "father" : "D", "cost" : 39, "path_cost" : 29, "deleted" : false }, { "name" : "B", "father" : "D", "cost" : 41, "path_cost" : 23, "deleted" : false } ], "successors" : [ { "name" : "A", "father" : "E", "cost" : 35, "path_cost" : 15, "deleted" : false }, { "name" : "D", "father" : "E", "cost" : 34, "path_cost" : 19, "deleted" : false } ], "closed" : [ { "name" : "S", "father" : "_", "cost" : 40, "path_cost" : 0, "deleted" : false }, { "name" : "D", "father" : "S", "cost" : 35, "path_cost" : 20, "deleted" : true }, { "name" : "E", "father" : "S", "cost" : 38, "path_cost" : 10, "deleted" : false } ] }, { "id" : 4, "open" : [ { "name" : "D", "father" : "E", "cost" : 34, "path_cost" : 19, "deleted" : false }, { "name" : "A", "father" : "E", "cost" : 35, "path_cost" : 15, "deleted" : false }, { "name" : "C", "father" : "D", "cost" : 39, "path_cost" : 29, "deleted" : true }, { "name" : "B", "father" : "D", "cost" : 41, "path_cost" : 23, "deleted" : true } ], "successors" : [ { "name" : "B", "father" : "D", "cost" : 40, "path_cost" : 22, "deleted" : false }, { "name" : "C", "father" : "D", "cost" : 38, "path_cost" : 28, "deleted" : false } ]
-	]
+	"path":[]
 }
