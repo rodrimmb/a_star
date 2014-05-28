@@ -38,6 +38,7 @@ class GenerateGraph
 			@graph.add_edges(
 				father,
 				child["name"], 
+				:id => "#{father}to#{child["name"]}", 
 				:arrowhead=>"open", 
 				:fontsize=>"15",
 				:label => "#{child["path_cost"]}"
