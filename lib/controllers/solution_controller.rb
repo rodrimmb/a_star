@@ -20,7 +20,7 @@ class SolutionController < ApplicationController
     private
 
     def obtain_solution(search)
-        if @searchesService.get_solution(search) == []
+        if @searchesService.get_solution(search) == [] && @nodesService.get_all_nodes(search).size > 0
             a_star = AStar.new
             result = []
             nodes = NodesHandler.new(search, @nodesService)
@@ -40,7 +40,7 @@ class SolutionController < ApplicationController
     end
 
     def obtain_path(search)
-        if @searchesService.get_steps(search) == []
+        if @searchesService.get_steps(search) == [] && @nodesService.get_all_nodes(search).size > 0
             a_star = AStar.new
             nodes = NodesHandler.new(search, @nodesService)
 
