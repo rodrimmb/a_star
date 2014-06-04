@@ -99,3 +99,13 @@ td button{
 .closed text {
 	fill: #a94442;
 }
+
+.arrow path {
+   stroke: #4cae4c;
+   stroke-width: 1;
+}
+.arrow polygon {
+   stroke: #4cae4c;
+   fill: #5cb85c;
+   stroke-width: 1;
+}
