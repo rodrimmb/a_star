@@ -55,6 +55,10 @@ td button{
 	display: none;
 }
 
+.node text{
+	font-family: "Helvetica";
+}
+
 .open path{
 	stroke: #d6e9c6;
 	fill: #dff0d8;
