@@ -104,6 +104,21 @@ td button{
 	fill: #a94442;
 }
 
+.selected-node path {
+	stroke: #000;
+	fill: #fcf8e3;
+	stroke-width: 3;
+}
+
+.selected-node polyline{
+	stroke: #000;
+	stroke-width: 3;
+}
+
+.selected-node text {
+	fill: #000;
+}
+
 .arrow path {
    stroke: #4cae4c;
    stroke-width: 1;
@@ -113,3 +128,15 @@ td button{
    fill: #5cb85c;
    stroke-width: 1;
 }
+
+.selected-arrow path {
+   stroke: #8a6d3b;
+   stroke-width: 3;
+}
+.selected-arrow polygon {
+   stroke: #8a6d3b;
+   fill: #5cb85c;
+   stroke-width: 3;
+}
+
+
