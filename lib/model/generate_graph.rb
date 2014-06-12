@@ -25,9 +25,7 @@ class GenerateGraph
 				:id => "#{node["name"]}", 
 				:label => "{#{node["name"]}|#{node["cost"]}}", 
 				:style => "filled,rounded",
-				:shape => "record",
-				:fillcolor => "#428bca",
-				:fontcolor => "white"
+				:shape => "record"
 			)
 	end
 
