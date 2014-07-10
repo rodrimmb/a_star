@@ -106,7 +106,7 @@ td button{
 
 .selected-node path {
 	stroke: #000;
-	fill: #fcf8e3;
+	fill: #dff0d8;
 	stroke-width: 3;
 }
 
@@ -130,11 +130,11 @@ td button{
 }
 
 .selected-arrow path {
-   stroke: #8a6d3b;
+   stroke: #4cae4c;
    stroke-width: 3;
 }
 .selected-arrow polygon {
-   stroke: #8a6d3b;
+   stroke: #4cae4c;
    fill: #5cb85c;
    stroke-width: 3;
 }
